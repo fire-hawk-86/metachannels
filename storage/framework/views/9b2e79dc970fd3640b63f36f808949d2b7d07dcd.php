@@ -29,57 +29,29 @@
       </div>
     </nav>
     <div class="container">
-      <h2>Create Metachannel</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <!-- div.col-sm-6.col-md-4.col-lg-3.col-xl-2*8>img[src=http://via.placeholder.com/300x200]+h3{Video $}+p{Date: 7.7.2017}+p{Description} -->
-      <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-        <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 1</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-        <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 2</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-        <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 3</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-        <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 4</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-        <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 5</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-        <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 6</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-        <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 7</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-        <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 8</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
-      </div>
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+          <h1>Create New Metachannel</h1>
+          <hr>
+
+          <form method="POST" action="<?php echo e(route('metachannels.store')); ?>">
+            <div class="form-group">
+              <label name="name">Name:</label>
+              <input id="name" name="name" class="form-control">
+            </div>
+            <div class="form-group">
+              <label name="description">Description:</label>
+              <textarea id="description" name="description" rows="10" class="form-control"></textarea>
+            </div>
+            <input type="submit" value="Create Metachannel" class="btn btn-success btn-lg btn-block">
+            <input type="hidden" name="_token" value="<?php echo e(Session::token()); ?>">
+          </form>
+
+        </div>
+      </div>﻿
+
     </div>
   </body>
 </html>
