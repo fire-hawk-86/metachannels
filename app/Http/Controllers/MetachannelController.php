@@ -13,7 +13,7 @@ class MetachannelController extends Controller
      */
     public function index()
     {
-        //
+        return view('metachannel.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class MetachannelController extends Controller
      */
     public function create()
     {
-        //
+        return view('metachannel.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class MetachannelController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('metachannel.show')->with('id', $id);
     }
 
     /**

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMetachannelsTable extends Migration
+class CreateChannelMetachannelTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateMetachannelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('metachannels', function (Blueprint $table) {
-            $table->increments('id');
-            
-            $table->string('name');
-            $table->text('description');
-            $table->timestamps();
+        Schema::create('channel_metachannel', function (Blueprint $table) {
+            $table->integer('channel_id');
+            $table->integer('metachannel_id');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateMetachannelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('metachannels');
+        Schema::dropIfExists('channel_metachannel');
     }
 }

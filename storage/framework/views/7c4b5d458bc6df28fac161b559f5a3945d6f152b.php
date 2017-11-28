@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-
+    <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
+    <!-- Frameworks -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <!-- Custom -->
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
@@ -29,56 +29,47 @@
       </div>
     </nav>
     <div class="container">
-      <h2>Metachannel Name</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <!-- div.col-sm-6.col-md-4.col-lg-3.col-xl-2*8>img[src=http://via.placeholder.com/300x200]+h3{Video $}+p{Date: 7.7.2017}+p{Description} -->
+      <h2>All</h2>
+      <!-- div.col-sm-6.col-md-4.col-lg-3.col-xl-2*8>img[src=http://via.placeholder.com/300x200]+h3{Metachannel $}+p{just a test} -->
       <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 1</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
+        <h3>Metachannel 1</h3>
+        <p>just a test</p>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 2</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
+        <h3>Metachannel 2</h3>
+        <p>just a test</p>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 3</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
+        <h3>Metachannel 3</h3>
+        <p>just a test</p>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 4</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
+        <h3>Metachannel 4</h3>
+        <p>just a test</p>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 5</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
+        <h3>Metachannel 5</h3>
+        <p>just a test</p>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 6</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
+        <h3>Metachannel 6</h3>
+        <p>just a test</p>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 7</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
+        <h3>Metachannel 7</h3>
+        <p>just a test</p>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <img src="http://via.placeholder.com/300x200" alt="">
-        <h3>Video 8</h3>
-        <p>Date: 7.7.2017</p>
-        <p>Description</p>
+        <h3>Metachannel 8</h3>
+        <p>just a test</p>
       </div>
     </div>
   </body>

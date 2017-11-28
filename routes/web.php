@@ -12,13 +12,7 @@
 */
 
 
-Route::get('/index', function () {
-    return view('index');
-});
-
-Route::get('/metachannel', function () {
-    return view('metachannel');
-});
+Route::resource('metachannels', 'MetachannelController');
 
 Route::get('/', function () {
     return view('welcome');
