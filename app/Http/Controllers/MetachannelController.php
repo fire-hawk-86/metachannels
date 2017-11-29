@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Metachannel;
+use DB;
 
 class MetachannelController extends Controller
 {
@@ -13,7 +15,9 @@ class MetachannelController extends Controller
      */
     public function index()
     {
-        return view('metachannel.index');
+        $metachannels = Metachannel::all();
+
+        return view('metachannel.index', ['metachannels' => $metachannels]);
     }
 
     /**
@@ -45,7 +49,26 @@ class MetachannelController extends Controller
      */
     public function show($id)
     {
-        return view('metachannel.show')->with('id', $id);
+        // get metachannel
+        $metachannel = Metachannel::find($id);
+
+        // extract all channel IDs from metachannel
+        $channelIds = [];
+        foreach($metachannel->channels as $channel)
+        {
+            $channelIds[] = $channel->id;
+        }
+
+        // get all videos based on the channel IDs
+        $videos = DB::table('videos')
+                    ->whereIn('channel_id', $channelIds)
+                    ->orderBy('uploaded_at', 'desc')
+                    ->get();
+
+        return view('metachannel.show', [
+            'metachannel'   => $metachannel,
+            'videos'        => $videos
+        ]);
     }
 
     /**

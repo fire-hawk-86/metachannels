@@ -10,4 +10,9 @@ class Metachannel extends Model
     {
     	return $this->belongsToMany('App\Channel');
     }
+
+    public function videos()
+    {
+    	return $this->hasManyThrough('App\Video', 'App\Channel');
+    }
 }

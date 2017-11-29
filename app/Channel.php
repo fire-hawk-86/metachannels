@@ -8,7 +8,7 @@ class Channel extends Model
 {
     public function metachannels()
     {
-    	return $this->belongsToMany('App\Metachannels');
+    	return $this->belongsToMany('App\Metachannel');
     }
 
     public function videos()

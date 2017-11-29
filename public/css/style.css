@@ -11,3 +11,7 @@ body {
   width: 100%;
   height: auto;
 }
+.fixed-height {
+	height: 405px;
+	overflow: hidden;
+}

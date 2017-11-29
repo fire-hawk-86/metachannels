@@ -83,8 +83,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="<?= URL::to('/index'); ?>">Index</a>
-                    <a href="<?= URL::to('/metachannel'); ?>">Metachannels</a>
+                    <a href="<?= url('/metachannels'); ?>">Index</a>
+                    <a href="<?= url('/metachannels/1'); ?>">Metachannels</a>
                 </div>
             </div>
         </div>

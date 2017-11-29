@@ -20,6 +20,7 @@ class CreateVideosTable extends Migration
             
             $table->string('name');
             $table->text('description');
+            $table->dateTime('uploaded_at');
         });
     }
 
