@@ -1,26 +1,47 @@
 @extends('layout')
 
+@section('title', $metachannel->name . ' - ')
+
+@section('navbar')
+  <li><a href="{{ url('meta/'.$metachannel->id.'/edit') }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</a></li>
+  <li><a href="{{ url('meta/'.$metachannel->id.'/update') }}"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Update</a></li>
+  <li><a onclick="document.getElementById('delete-form').submit();" href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a></li>
+  <li>
+    <form id="delete-form" method="POST" action="{{ url('meta') .'/'. $metachannel->id }}">
+      {{ method_field('DELETE') }}
+      {{ csrf_field() }}
+    </form>
+  </li>
+@endsection
+
 @section('content')
     <div class="container">
-      <h2>Metachannel: {{ $metachannel->name }}</h2>
-      <p>Channels:
 
-        @foreach($metachannel->channels as $channel)
-          <a href="https://www.youtube.com/channel/{{ $channel->ytid }}">{{ $channel->name }}</a>,
-        @endforeach
-
-      </p>
-
-      @foreach($videos as $video)
-        <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2">
-          <a href="https://www.youtube.com/watch?v={{ $video->ytid }}">
-            <img src="https://img.youtube.com/vi/{{ $video->ytid }}/default.jpg" alt="">
-            <h3>{{ $video->name }}</h3>
-          </a>
-          <p>uploaded: {{ $video->uploaded_at }}</p>
-          <p>{{ $video->description }}</p>
+      <div class="row">
+        <div class="col-sm-12"> 
+          <h2>{{ $metachannel->name }}
+            <small>(
+              @foreach($metachannel->channels as $channel)
+                <a href="https://www.youtube.com/channel/{{ $channel->ytid }}">{{ $channel->name }}</a>{{ $loop->remaining ? ', ' : '' }}
+              @endforeach
+            )</small>
+          </h2>
+          <p class="m30">{{ $metachannel->description }}</p>
         </div>
-      @endforeach
+      </div>
+
+      <div class="row">
+        @foreach($metachannel->videos() as $video)
+          <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <a href="https://www.youtube.com/watch?v={{ $video->ytid }}">
+              <img src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg" alt="">
+              <h3>{{ $video->name }}</h3>
+            </a>
+            <p>{{ $video->uploaded_at->format('d. F Y') }} (<a href="https://www.youtube.com/channel/{{ $video->channel->ytid }}">{{ $video->channel->name }}</a>)</p>
+            <p>{{ $video->description }}</p>
+          </div>
+        @endforeach
+      </div>
 
     </div>
 @endsection

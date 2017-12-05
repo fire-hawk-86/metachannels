@@ -12,8 +12,20 @@
 */
 
 
-Route::resource('metachannels', 'MetachannelController');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::resource('meta', 'MetachannelController');
+
+// MetachannelController
+Route::get(		'meta/{id}/edit',	'MetachannelController@edit');
+Route::get(		'meta/new',			'MetachannelController@create');
+Route::get(		'meta/{id}',		'MetachannelController@show');
+Route::get(		'/',				'MetachannelController@index');
+Route::post(	'meta',				'MetachannelController@store');
+Route::put(		'meta/{id}',		'MetachannelController@update');
+Route::delete(	'meta/{id}',		'MetachannelController@destroy');
+
+// UpdateController
+Route::get('meta/{id}/update', 'UpdateController@metachannel');
+
+// Redirects
+Route::get('meta', function() {	return redirect('/'); });

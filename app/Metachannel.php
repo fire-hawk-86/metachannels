@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Video;
 
 class Metachannel extends Model
 {
@@ -13,6 +14,12 @@ class Metachannel extends Model
 
     public function videos()
     {
-    	return $this->hasManyThrough('App\Video', 'App\Channel');
+    	$metachannelId = $this->id;
+    	$channelIds = [];
+    	foreach ($this->channels as $channel) { $channelIds[] = $channel->id; }
+
+    	return Video::whereIn('channel_id', $channelIds)
+    		->orderBy('uploaded_at', 'desc')
+    		->get();
     }
 }

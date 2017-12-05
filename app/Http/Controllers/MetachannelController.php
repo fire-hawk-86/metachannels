@@ -27,7 +27,7 @@ class MetachannelController extends Controller
      */
     public function create()
     {
-        return view('metachannel.create');
+        return view('metachannel/create');
     }
 
     /**
@@ -38,7 +38,17 @@ class MetachannelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'          => 'required|unique:metachannels',
+            'description'   => 'required',
+        ]);
+
+        DB::table('metachannels')->insert([
+            'name'          => $request->name,
+            'description'   => $request->description,
+        ]);
+
+        return redirect('/');
     }
 
     /**
@@ -49,26 +59,9 @@ class MetachannelController extends Controller
      */
     public function show($id)
     {
-        // get metachannel
         $metachannel = Metachannel::find($id);
 
-        // extract all channel IDs from metachannel
-        $channelIds = [];
-        foreach($metachannel->channels as $channel)
-        {
-            $channelIds[] = $channel->id;
-        }
-
-        // get all videos based on the channel IDs
-        $videos = DB::table('videos')
-                    ->whereIn('channel_id', $channelIds)
-                    ->orderBy('uploaded_at', 'desc')
-                    ->get();
-
-        return view('metachannel.show', [
-            'metachannel'   => $metachannel,
-            'videos'        => $videos
-        ]);
+        return view('metachannel.show', ['metachannel' => $metachannel]);
     }
 
     /**
@@ -79,7 +72,8 @@ class MetachannelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $metachannel = Metachannel::find($id);
+        return view('metachannel/edit', ['metachannel' => $metachannel]);
     }
 
     /**
@@ -91,7 +85,18 @@ class MetachannelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name'          => 'required',
+            'description'   => 'required',
+        ]);
+
+        DB::table('metachannels')->where('id', $id)
+            ->update([
+                'name'          => $request->name,
+                'description'   => $request->description,
+            ]);
+
+        return redirect('/meta/'.$id);
     }
 
     /**
@@ -102,6 +107,9 @@ class MetachannelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $metachannel = Metachannel::find($id);
+        $metachannel->delete();
+
+        return redirect('/');
     }
 }
