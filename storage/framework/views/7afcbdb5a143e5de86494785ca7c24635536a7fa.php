@@ -23,7 +23,7 @@
 
             <small>(
               <?php $__currentLoopData = $metachannel->channels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <a href="https://www.youtube.com/channel/<?php echo e($channel->ytid); ?>"><?php echo e($channel->name); ?></a><?php echo e($loop->remaining ? ', ' : ''); ?>
+                <a href="https://www.youtube.com/channel/<?php echo e($channel->ytid); ?>" target="_blank"><?php echo e($channel->name); ?></a><?php echo e($loop->remaining ? ', ' : ''); ?>
 
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             )</small>
@@ -35,11 +35,11 @@
       <div class="row">
         <?php $__currentLoopData = $metachannel->videos(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $video): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            <a href="https://www.youtube.com/watch?v=<?php echo e($video->ytid); ?>">
+            <a href="https://www.youtube.com/watch?v=<?php echo e($video->ytid); ?>" target="_blank">
               <img src="https://img.youtube.com/vi/<?php echo e($video->ytid); ?>/mqdefault.jpg" alt="">
               <h3><?php echo e($video->name); ?></h3>
             </a>
-            <p><?php echo e($video->uploaded_at->format('d. F Y')); ?> (<a href="https://www.youtube.com/channel/<?php echo e($video->channel->ytid); ?>"><?php echo e($video->channel->name); ?></a>)</p>
+            <p><?php echo e($video->uploaded_at->format('d. F Y')); ?> (<a href="https://www.youtube.com/channel/<?php echo e($video->channel->ytid); ?>" target="_blank"><?php echo e($video->channel->name); ?></a>)</p>
             <p><?php echo e($video->description); ?></p>
           </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

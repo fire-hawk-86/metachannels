@@ -51,13 +51,4 @@ class UpdateController extends Controller
         }
         return redirect('/meta/'.$id);
     }
-
-    public function channel($id)
-    {
-    	echo "Updating Channel $id<br>";
-    	$channel = Channel::find($id);
-        $url = 'https://www.googleapis.com/youtube/v3/search?key='.env('GOOGLE_API_KEY').'&channelId='.$channel->ytid.'&part=snippet,id&order=date&maxResults=20';
-        $json = file_get_contents($url);
-        dd($json);
-    }
 }

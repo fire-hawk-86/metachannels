@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Metachannel;
+use App\Channel;
 use DB;
+use App\Http\Controllers\UpdateController;
 
 class MetachannelController extends Controller
 {
@@ -43,10 +46,21 @@ class MetachannelController extends Controller
             'description'   => 'required',
         ]);
 
-        DB::table('metachannels')->insert([
+        $metachannelId = DB::table('metachannels')->insertGetId([
             'name'          => $request->name,
             'description'   => $request->description,
         ]);
+
+        
+        foreach ($request->channels as $channel)
+        {
+            if($channel != '')
+            {
+                $this->add_channel($metachannelId, $channel);
+            }
+        }
+
+        \App::make('App\Http\Controllers\UpdateController')->metachannel($metachannelId);
 
         return redirect('/');
     }
@@ -111,5 +125,48 @@ class MetachannelController extends Controller
         $metachannel->delete();
 
         return redirect('/');
+    }
+
+    public function add_channel($metachannelId, $url)
+    {
+        $url_parts = explode('/', $url);
+
+        if($url_parts[3] == 'channel')
+        {
+            $channelYtid = $url_parts[4];
+            echo 'channel ID is '.$channelYtid;
+            $channel_data = json_decode( file_get_contents('https://www.googleapis.com/youtube/v3/channels?part=snippet&id='.$channelYtid.'&key='.env('GOOGLE_API_KEY')) );
+        }
+        elseif ($url_parts[3] == 'user') {
+            $channelName = $url_parts[4];
+            echo 'channel name is '.$channelName;
+            $channel_data = json_decode( file_get_contents('https://www.googleapis.com/youtube/v3/channels?part=snippet&forUsername='.$channelName.'&key='.env('GOOGLE_API_KEY')) );
+        }
+
+        if(count(Channel::where('ytid', $channel_data->items[0]->id)->get()->all()) == 0)
+        {
+            $channelId = Channel::insertGetId([
+                'ytid'          => $channel_data->items[0]->id,
+                'name'          => $channel_data->items[0]->snippet->title,
+                'description'   => $channel_data->items[0]->snippet->description
+            ]);
+        }
+        else
+        {
+            $channelId = Channel::where('ytid', $channel_data->items[0]->id)->get()->first()->id;
+        }
+
+        $count = count( DB::table('channel_metachannel')->where([
+                            ['channel_id', $channelId],
+                            ['metachannel_id', $metachannelId]
+                        ])->get()->all() );
+
+        if($count == 0)
+        {
+            DB::table('channel_metachannel')->insert([
+                'channel_id'     => $channelId,
+                'metachannel_id' => $metachannelId
+            ]);
+        }
     }
 }

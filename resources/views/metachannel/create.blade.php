@@ -33,6 +33,15 @@
               <textarea id="description" name="description" rows="10" class="form-control"></textarea>
             </div>
 
+            <div id="channels" class="form-group">
+              <label name="channels">Channels:</label>
+              <input name="channels[]" class="form-control" placeholder="Channel ID">
+              <input name="channels[]" class="form-control" placeholder="Channel ID">
+              <input name="channels[]" class="form-control" placeholder="Channel ID">
+              <input name="channels[]" class="form-control" placeholder="Channel ID">
+              <input name="channels[]" class="form-control" placeholder="Channel ID">
+            </div>
+
             <input type="submit" value="Create Metachannel" class="btn btn-success btn-lg btn-block">
             <input type="hidden" name="_token" value="{{ Session::token() }}">
 

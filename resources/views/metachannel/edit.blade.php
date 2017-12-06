@@ -33,7 +33,7 @@
               <textarea id="description" name="description" rows="10" class="form-control">{{ $metachannel->description }}</textarea>
             </div>
 
-            <input type="submit" value="{{ 'Update '.$metachannel->name }}" class="btn btn-success btn-lg btn-block">
+            <input type="submit" value="Update Metachannel" class="btn btn-success btn-lg btn-block">
             <input type="hidden" name="_token" value="{{ Session::token() }}">
             {{ method_field('PUT') }}
 

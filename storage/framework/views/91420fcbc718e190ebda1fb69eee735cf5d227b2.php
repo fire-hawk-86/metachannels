@@ -31,7 +31,7 @@
               <textarea id="description" name="description" rows="10" class="form-control"><?php echo e($metachannel->description); ?></textarea>
             </div>
 
-            <input type="submit" value="<?php echo e('Update '.$metachannel->name); ?>" class="btn btn-success btn-lg btn-block">
+            <input type="submit" value="Update Metachannel" class="btn btn-success btn-lg btn-block">
             <input type="hidden" name="_token" value="<?php echo e(Session::token()); ?>">
             <?php echo e(method_field('PUT')); ?>
 

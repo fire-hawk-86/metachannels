@@ -15,6 +15,8 @@
 
 //Route::resource('meta', 'MetachannelController');
 
+Route::get('addchannel/{test}', 'MetachannelController@add_channel');
+
 // MetachannelController
 Route::get(		'meta/{id}/edit',	'MetachannelController@edit');
 Route::get(		'meta/new',			'MetachannelController@create');
