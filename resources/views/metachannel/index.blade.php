@@ -1,6 +1,18 @@
 @extends('layout')
 
 @section('navbar')
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      <span class="glyphicon glyphicon-user"></span>  Login
+    </a>
+      <div class="dropdown-menu custom-dropdown-form">
+        <form>
+          <input class="form-control" placeholder="email/username">
+          <input class="form-control" type="password" placeholder="password">
+          <input class="form-control btn btn-primary btn-block" type="submit" value="Login">
+        </form>
+      </div>
+  </li>
   <li><a href="{{ url('meta/new') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New</a></li>
 @endsection
 
@@ -10,7 +22,7 @@
         <div class="col-sm-12">
           <h2>All Metachannels</h2>
         </div>
-      
+
         @foreach($metachannels as $metachannel)
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <a href="{{ url('meta').'/'.$metachannel->id}}">

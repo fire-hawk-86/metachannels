@@ -18,3 +18,20 @@ body {
 .m30 {
 	margin-top: 20px;
 }
+.custom-dropdown-form {
+  padding: 7px;
+  min-width: 200px;
+}
+
+/* Small devices */
+@media (min-width: 768px) {
+
+}
+/* Medium devices */
+@media (min-width: 992px) {
+
+}
+/* Large devices */
+@media (min-width: 1200px) {
+
+}
