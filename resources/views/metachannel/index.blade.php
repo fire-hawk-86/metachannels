@@ -7,9 +7,18 @@
     </a>
       <div class="dropdown-menu custom-dropdown-form">
         <form>
-          <input class="form-control" placeholder="email/username">
+          <div class="form-group">
+            <input class="form-control" placeholder="email/username">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" placeholder="password">
+          </div>
+          <div class="form-group">
+            <input class="form-control btn btn-primary btn-block" type="submit" value="Login">
+          </div>
+          <!--<input class="form-control" placeholder="email/username">
           <input class="form-control" type="password" placeholder="password">
-          <input class="form-control btn btn-primary btn-block" type="submit" value="Login">
+          <input class="form-control btn btn-primary btn-block" type="submit" value="Login">-->
         </form>
       </div>
   </li>
