@@ -51,7 +51,7 @@ class MetachannelController extends Controller
             'description'   => $request->description,
         ]);
 
-        
+
         foreach ($request->channels as $channel)
         {
             if($channel != '')
@@ -109,6 +109,16 @@ class MetachannelController extends Controller
                 'name'          => $request->name,
                 'description'   => $request->description,
             ]);
+
+        $this->remove_all_channels($id);
+
+        foreach ($request->channels as $channel)
+        {
+            if($channel != '')
+            {
+                $this->add_channel($id, $channel);
+            }
+        }
 
         return redirect('/meta/'.$id);
     }
@@ -168,5 +178,10 @@ class MetachannelController extends Controller
                 'metachannel_id' => $metachannelId
             ]);
         }
+    }
+
+    public function remove_all_channels($metachannelId)
+    {
+        DB::table('channel_metachannel')->where('metachannel_id', $metachannelId)->delete();
     }
 }

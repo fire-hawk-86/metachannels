@@ -24,12 +24,12 @@
           <form method="POST" action="{{ url('meta') }}">
 
             <div class="form-group">
-              <label name="name">Name:</label>
+              <label name="name" for="name">Name:</label>
               <input id="name" name="name" class="form-control" value="{{ old('name') }}">
             </div>
 
             <div class="form-group">
-              <label name="description">Description:</label>
+              <label name="description" for="description">Description:</label>
               <textarea id="description" name="description" rows="10" class="form-control">{{ old('description') }}</textarea>
             </div>
 

@@ -18,7 +18,7 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-sm-12"> 
+        <div class="col-sm-12">
           <h2>{{ $metachannel->name }}
             <small>(
               @foreach($metachannel->channels as $channel)
@@ -33,7 +33,8 @@
       <div class="row">
         @foreach($metachannel->videos() as $video)
           <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            <a href="https://www.youtube.com/watch?v={{ $video->ytid }}" target="_blank">
+            <!--<a href="https://www.youtube.com/watch?v={{ $video->ytid }}" target="_blank">-->
+            <a href="{{ url('video').'/'.$video->ytid }}">
               <img src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg" alt="">
               <h3>{{ $video->name }}</h3>
             </a>

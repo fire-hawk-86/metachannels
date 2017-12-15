@@ -25,7 +25,7 @@
           </button>
           <a class="navbar-brand" href="{{ url('/') }}"><span class="label label-danger lb-lg">Meta</span> Channels</a>
         </div>
-        
+
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             @yield('navbar')
@@ -36,7 +36,7 @@
     </nav>
 
     @yield('content')
-    
+
     <!-- JS -->
     <script src="/js/jquery-3.2.1.js"></script>
     <script src="/js/bootstrap.js"></script>

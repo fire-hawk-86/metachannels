@@ -17,6 +17,13 @@
 
 Route::get('addchannel/{test}', 'MetachannelController@add_channel');
 
+// Video
+Route::get('video/{id}', 'VideoController');
+
+// Video Search
+Route::get('search/{query}', 'VideoSearchController');
+Route::post('search', 'VideoSearchController@processForm');
+
 // MetachannelController
 Route::get(		'meta/{id}/edit',	'MetachannelController@edit');
 Route::get(		'meta/new',			'MetachannelController@create');
