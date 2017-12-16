@@ -134,6 +134,8 @@ class MetachannelController extends Controller
         $metachannel = Metachannel::find($id);
         $metachannel->delete();
 
+        $this->remove_all_channels($id);
+
         return redirect('/');
     }
 

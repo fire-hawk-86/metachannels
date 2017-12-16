@@ -30,6 +30,7 @@
       <div class="row">
         <div class="col-sm-12">
           <h2>All Metachannels</h2>
+          <hr>
         </div>
 
         @foreach($metachannels as $metachannel)
