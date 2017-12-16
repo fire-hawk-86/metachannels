@@ -3,11 +3,11 @@
 @section('title', $metachannel->name . ' - ')
 
 @section('navbar')
-  <li><a href="{{ url('meta/'.$metachannel->id.'/edit') }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</a></li>
-  <li><a href="{{ url('meta/'.$metachannel->id.'/update') }}"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Update</a></li>
+  <li><a href="{{ url("meta/$metachannel->id/edit") }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</a></li>
+  <li><a href="{{ url("meta/$metachannel->id/update") }}"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Update</a></li>
   <li><a onclick="document.getElementById('delete-form').submit();" href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a></li>
   <li>
-    <form id="delete-form" method="POST" action="{{ url('meta') .'/'. $metachannel->id }}">
+    <form id="delete-form" method="POST" action="{{ url("meta/$metachannel->id") }}">
       {{ method_field('DELETE') }}
       {{ csrf_field() }}
     </form>
@@ -34,7 +34,7 @@
         @foreach($metachannel->videos() as $video)
           <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <!--<a href="https://www.youtube.com/watch?v={{ $video->ytid }}" target="_blank">-->
-            <a href="{{ url('video').'/'.$video->ytid }}">
+            <a href="{{ url("video/$video->ytid") }}">
               <img src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg" alt="">
               <h3>{{ $video->name }}</h3>
             </a>

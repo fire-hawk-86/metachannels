@@ -35,7 +35,7 @@
 
         @foreach($metachannels as $metachannel)
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            <a href="{{ url('meta').'/'.$metachannel->id}}">
+            <a href="{{ url("meta/$metachannel->id") }}">
               @if($metachannel->videos()->isNotEmpty())
                 <img src="https://img.youtube.com/vi/{{ $metachannel->videos()->first()->ytid }}/mqdefault.jpg" alt="">
               @else
