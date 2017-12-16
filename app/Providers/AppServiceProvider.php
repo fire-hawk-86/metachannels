@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use Validator;
+use Route;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('youtubeChannelUrl', function($attribute, $value, $parameters, $validator) {
             return $value == 'foo';
         });
+
+        Route::resourceVerbs([
+            'create' => 'new',
+        ]);
     }
 
     /**

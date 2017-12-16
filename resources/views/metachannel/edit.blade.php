@@ -21,7 +21,7 @@
           <h1>{{ 'Edit '.$metachannel->name }}</h1>
           <hr>
 
-          <form method="POST" action="{{ url('meta/'.$metachannel->id) }}">
+          <form method="POST" action="{{ url("meta/$metachannel->id") }}">
 
             <div class="form-group">
               <label name="name" for="name">Name:</label>
