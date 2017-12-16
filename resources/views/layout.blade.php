@@ -5,12 +5,10 @@
     <title>@yield('title')Metachannels</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/favicon.ico"/>
-    <!-- Font -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -38,7 +36,6 @@
     @yield('content')
 
     <!-- JS -->
-    <script src="/js/jquery-3.2.1.js"></script>
-    <script src="/js/bootstrap.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
   </body>
 </html>
