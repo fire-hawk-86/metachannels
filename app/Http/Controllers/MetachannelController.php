@@ -64,7 +64,7 @@ class MetachannelController extends Controller
             }
         }
 
-        \App::make('App\Http\Controllers\UpdateController')->metachannel($metachannelId);
+        $this->update_channels($metachannelId);
 
         return redirect('/');
     }

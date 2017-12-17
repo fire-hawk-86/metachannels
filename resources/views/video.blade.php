@@ -28,13 +28,13 @@
             <h3 class="first-item" title="youtube.com doesn't give you this option anymore">Related Videos<br><small>(instead of recomended)</small></h3>
 
             @foreach ($related_videos->items as $video)
-                <div class="clearfix" style="min-height: 105px">
+                <div style="min-height: 78px; font-size: .8em; position: relative;">
                     <a href="{{ url('video/'.$video->id->videoId) }}">
-                        <img class="pull-left" src="{{$video->snippet->thumbnails->default->url}}">
+                        <img style="position: absolute; top: -11px; left: 0; clip: rect(11px,120px,79px,0px);" src="{{$video->snippet->thumbnails->default->url}}">
                         <div style="margin-left: 130px;">{{$video->snippet->title}}</div>
                     </a>
                     <div style="margin-left: 130px;">{{Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y')}}</div>
-                    <div style="margin-left: 130px; margin-bottom: 15px">Channel: <a href="{{ url('https://www.youtube.com/channel/'.$video->snippet->channelId) }}">{{ $video->snippet->channelTitle }}</a></div>
+                    <div style="margin-left: 130px; margin-bottom: 10px">Channel: <a href="{{ url('https://www.youtube.com/channel/'.$video->snippet->channelId) }}">{{ $video->snippet->channelTitle }}</a></div>
                 </div>
             @endforeach
 
