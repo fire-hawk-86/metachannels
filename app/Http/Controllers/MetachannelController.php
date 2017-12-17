@@ -12,7 +12,9 @@ class MetachannelController extends Controller
 {
     public function __construct()
     {
-
+        $this->middleware('auth', ['only' => [
+            'edit', 'update', 'destroy',
+        ]]);
     }
 
     /**

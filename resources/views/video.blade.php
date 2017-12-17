@@ -16,7 +16,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-            <div class="video-container">
+            <div class="embed-responsive embed-responsive-16by9">
                 <iframe width="853" height="480" src="https://www.youtube.com/embed/{{ $id }}?rel=0&autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
             </div>
             <h3>{{$vid->snippet->title}}</h3>
@@ -26,7 +26,13 @@
         </div>
         <div class="col-md-4">
             <h3 class="first-item" title="youtube.com doesn't give you this option anymore">Related Videos<br><small>(instead of recomended)</small></h3>
-
+            <div class="form-group">
+                <select class="form-control">
+                    <option value="">All Channels</option>
+                    <option value="">This Channel</option>
+                    <option value="">Other Channels</option>
+                </select>
+            </div>
             @foreach ($related_videos->items as $video)
                 <div style="min-height: 78px; font-size: .8em; position: relative;">
                     <a href="{{ url('video/'.$video->id->videoId) }}">
