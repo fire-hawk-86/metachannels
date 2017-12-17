@@ -29,3 +29,7 @@ Route::get('meta/{id}/update',	'UpdateController@metachannel');
 
 // Redirects
 Route::get('meta', function() {	return redirect('/'); });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
