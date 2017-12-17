@@ -17,6 +17,8 @@ Route::get('/', 'MetachannelController@index');
 
 Route::get('video/{id}',		'VideoController');
 
+Route::get('channel/{id}',		'ChannelController');
+
 Route::get('search/{query}',	'VideoSearchController');
 Route::post('search',			'VideoSearchController@processForm');
 
