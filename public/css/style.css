@@ -9,7 +9,7 @@ body > .container {
 footer.navbar.navbar-static-bottom {
   margin-bottom: 0;
   margin-top: 22px;
-  /*background-color: #fff;*/
+  background-color: #fff;
 }
 
 .navbar-static-bottom{

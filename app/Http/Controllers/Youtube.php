@@ -27,7 +27,7 @@ class Youtube extends Controller
         $description = preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $description);
         $vid->items[0]->snippet->description = $description;
 
-        return view('video', [
+        return view('youtube.video', [
             'id' => $id,
             'related_videos' => $related_videos,
             'vid' => $vid->items[0]
@@ -49,7 +49,7 @@ class Youtube extends Controller
             'type'              => 'video',
         ]);
 
-        return view('search', [
+        return view('youtube.search', [
             'result' => $obj,
             'query' => $query
         ]);

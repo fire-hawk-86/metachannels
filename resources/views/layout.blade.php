@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -80,7 +80,7 @@
 
     @yield('content')
 
-    <footer class="navbar navbar-inverse navbar-static-bottom">
+    <footer class="navbar navbar-default navbar-static-bottom">
       <div class="container">
         <a href="{{url('info')}}" class="navbar-text" style="color: #aaa; margin-left: 0;">Why this Website?</a>
         <span class="navbar-text pull-right" style="color: #aaa; margin-left: 0;">Created with Laravel 5 / Bootstrap 3</span>
