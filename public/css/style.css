@@ -30,6 +30,11 @@ footer.navbar.navbar-default.navbar-static-bottom {
   overflow: hidden;
 }
 
+.fixed-height2 {
+  height: 350px;
+  overflow: hidden;
+}
+
 .m30 {
   margin-top: 20px;
 }

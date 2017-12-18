@@ -14,7 +14,7 @@
         </div>
 
         @foreach($metachannels as $metachannel)
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+          <div class="fixed-height2 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <a href="{{ url("meta/$metachannel->id") }}">
               @if($metachannel->videos()->isNotEmpty())
                 <img src="https://img.youtube.com/vi/{{ $metachannel->videos()->first()->ytid }}/mqdefault.jpg" alt="">
@@ -29,7 +29,11 @@
                 <a href="https://www.youtube.com/channel/{{ $channel->ytid }}">{{ $channel->name }}</a>{{ $loop->remaining ? ', ' : '' }}
               @endforeach
             </p>
-            <p>Created by: <a href="{{ url('user/'.$metachannel->user->name) }}">{{ $metachannel->user->name }}</a></p>
+            @if($metachannel->user)
+              <p>Created by: <a href="{{ url('user/'.$metachannel->user->name) }}">{{ $metachannel->user->name }}</a></p>
+            @else
+              <p>Created by: Guest</p>
+            @endif
           </div>
         @endforeach
 

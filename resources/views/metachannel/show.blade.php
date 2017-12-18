@@ -27,6 +27,9 @@
             )</small>
           </h2>
           <p class="m30">{{ $metachannel->description }}</p>
+          @if($metachannel->user)
+            <p>by <a href="{{ url('user/'.$metachannel->user->name) }}">{{ $metachannel->user->name }}</a></p>
+          @endif
         </div>
       </div>
 

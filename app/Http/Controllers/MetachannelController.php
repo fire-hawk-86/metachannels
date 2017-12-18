@@ -8,6 +8,7 @@ use App\Metachannel;
 use App\Channel;
 use DB;
 use App\User;
+use Auth;
 
 class MetachannelController extends Controller
 {
@@ -56,21 +57,24 @@ class MetachannelController extends Controller
             'description'   => 'required',
         ]);
 
-        $metachannelId = DB::table('metachannels')->insertGetId([
-            'name'          => $request->name,
-            'description'   => $request->description,
-        ]);
-
+        $metachannel = new Metachannel;
+        if (Auth::check())
+        {
+            $metachannel->user_id   = Auth::id();
+        }
+        $metachannel->name          = $request->name;
+        $metachannel->description   = $request->description;
+        $metachannel->save();
 
         foreach ($request->channels as $channel)
         {
             if($channel != '')
             {
-                $this->add_channel($metachannelId, $channel);
+                $this->add_channel($metachannel->id, $channel);
             }
         }
 
-        $this->update_channels($metachannelId);
+        $this->update_channels($metachannel->id);
 
         return redirect('/');
     }
@@ -109,25 +113,34 @@ class MetachannelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name'          => 'required',
-            'description'   => 'required',
-        ]);
+        $metachannel = Metachannel::find($id);
 
-        DB::table('metachannels')->where('id', $id)
-            ->update([
-                'name'          => $request->name,
-                'description'   => $request->description,
+        if ($metachannel->user_id == Auth::id() or $metachannel->user_id == null)
+        {
+            $this->validate($request, [
+                'name'          => 'required',
+                'description'   => 'required',
             ]);
 
-        $this->remove_all_channels($id);
+            DB::table('metachannels')->where('id', $id)
+                ->update([
+                    'name'          => $request->name,
+                    'description'   => $request->description,
+                ]);
 
-        foreach ($request->channels as $channel)
-        {
-            if($channel != '')
+            $this->remove_all_channels($id);
+
+            foreach ($request->channels as $channel)
             {
-                $this->add_channel($id, $channel);
+                if($channel != '')
+                {
+                    $this->add_channel($id, $channel);
+                }
             }
+        }
+        else
+        {
+            return "Can't edit this Metachannel. Wrong user.";
         }
 
         return redirect('/meta/'.$id);
@@ -142,9 +155,16 @@ class MetachannelController extends Controller
     public function destroy($id)
     {
         $metachannel = Metachannel::find($id);
-        $metachannel->delete();
-
-        $this->remove_all_channels($id);
+        
+        if ($metachannel->user_id == Auth::id() or $metachannel->user_id == null)
+        {
+            $metachannel->delete();
+            $this->remove_all_channels($id);
+        }
+        else
+        {
+            return "This is not your metachannel, can't delete it";
+        }
 
         return redirect('/');
     }
