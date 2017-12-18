@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h2>All Metachannels</h2>
+          <h2>{{ $title }}</h2>
           <hr>
         </div>
 
@@ -25,12 +25,11 @@
             </a>
             <p>
               Channels:
-
               @foreach($metachannel->channels as $channel)
                 <a href="https://www.youtube.com/channel/{{ $channel->ytid }}">{{ $channel->name }}</a>{{ $loop->remaining ? ', ' : '' }}
               @endforeach
-
             </p>
+            <p>Created by: <a href="{{ url('user/'.$metachannel->user->name) }}">{{ $metachannel->user->name }}</a></p>
           </div>
         @endforeach
 

@@ -12,7 +12,6 @@
 */
 
 
-
 Route::get('/', 'MetachannelController@index');
 
 Route::get('video/{id}',		'Youtube@video');
@@ -21,6 +20,7 @@ Route::get('search/{query}',	'Youtube@search');
 Route::post('search',			'Youtube@search_get');
 
 Route::resource('meta',			'MetachannelController');
+Route::get('user/{id}',			'MetachannelController@index_user');
 Route::get('addchannel/{test}', 'MetachannelController@add_channel');
 Route::get('meta/{id}/update',	'MetachannelController@update_channels');
 
@@ -30,3 +30,8 @@ Route::get('meta', function() {	return redirect('/'); });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Static Pages
+Route::get('/{page_name}', function($page_name) {
+	return view("pages/$page_name");
+});

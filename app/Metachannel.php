@@ -22,4 +22,9 @@ class Metachannel extends Model
     		->orderBy('uploaded_at', 'desc')
     		->get();
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

@@ -33,17 +33,20 @@
               <textarea id="description" name="description" rows="10" class="form-control">{{ $metachannel->description }}</textarea>
             </div>
 
-            <div id="channels" class="form-group">
-                <label>Channels:</label>
-                @foreach ($metachannel->channels as $channel)
-                    <input type="text" title="{{ $channel->name }}" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ url('https://www.youtube.com/channel/'.$channel->ytid) }}">
-                @endforeach
-                <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-            </div>
+            <p><label>Channels:</label></p>
+            @foreach ($metachannel->channels as $channel)
+              <div class="form-group">
+                <label>{{ $channel->name }}</label>
+                <input type="text" title="{{ $channel->name }}" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ url('https://www.youtube.com/channel/'.$channel->ytid) }}">
+              </div>
+            @endforeach
+            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+            
 
             <input type="submit" value="Update Metachannel" class="btn btn-success btn-lg btn-block">
             <input type="hidden" name="_token" value="{{ Session::token() }}">

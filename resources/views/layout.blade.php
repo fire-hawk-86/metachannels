@@ -80,6 +80,11 @@
 
     @yield('content')
 
+    <footer class="navbar navbar-default navbar-static-bottom">
+      <div class="container">
+        <a href="{{url('info')}}" class="navbar-text" style="color: #aaa; margin-left: 0;">Why this Website?</a>
+      </div>
+    </footer>
     <!-- JS -->
     <script src="{{ asset('js/app.js') }}"></script>
   </body>

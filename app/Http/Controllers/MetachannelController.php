@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Metachannel;
 use App\Channel;
 use DB;
+use App\User;
 
 class MetachannelController extends Controller
 {
@@ -26,7 +27,10 @@ class MetachannelController extends Controller
     {
         $metachannels = Metachannel::all();
 
-        return view('metachannel.index', ['metachannels' => $metachannels]);
+        return view('metachannel.index', [
+            'title' => 'All Metachannels',
+            'metachannels' => $metachannels,
+        ]);
     }
 
     /**
@@ -232,5 +236,16 @@ class MetachannelController extends Controller
             }
         }
         return redirect('/meta/'.$id);
+    }
+
+    public function index_user($user)
+    {
+        $user = User::where('name', $user)->firstOrFail();
+        $metachannels = Metachannel::where('user_id', $user->id)->get();
+
+        return view('metachannel.index', [
+            'title' => 'Metachannels of ' . $user->name,
+            'metachannels' => $metachannels,
+        ]);
     }
 }

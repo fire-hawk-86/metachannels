@@ -2,6 +2,16 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+body > .container {
+  min-height: calc(100vh - 74px - 73px);
+}
+
+footer.navbar.navbar-default.navbar-static-bottom {
+  margin-bottom: 0;
+  margin-top: 22px;
+  background-color: #fff;
+}
+
 .lb-lg {
   font-size: 18px;
 }
