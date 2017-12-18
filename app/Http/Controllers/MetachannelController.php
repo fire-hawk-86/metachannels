@@ -222,7 +222,6 @@ class MetachannelController extends Controller
     public function update_channels($id)
     {
         $metachannel = Metachannel::find($id);
-        echo 'Updating Metachannel "'.$metachannel->name.'" (id='.$metachannel->id.') ...<br><br>';
         foreach ($metachannel->channels as $channel)
         {
             $url = 'https://www.googleapis.com/youtube/v3/search?key='.env('GOOGLE_API_KEY').'&channelId='.$channel->ytid.'&part=snippet,id&order=date&maxResults=20';
@@ -236,15 +235,7 @@ class MetachannelController extends Controller
                 if($video->id->kind == 'youtube#video')
                 {
                     if( count( DB::table('videos')->where('ytid', $video->id->videoId)->get()->all() ) == 0)
-                    {
-                        /*
-                        echo $video->id->videoId.'<br>';
-                        echo $video->snippet->title.'<br>';
-                        echo $video->snippet->description.'<br>';
-                        echo date("Y-m-d G:i:s", strtotime($video->snippet->publishedAt)).'<br>';
-                        echo '<br>';
-                        */
-                        
+                    {   
                         DB::table('videos')->insert([
                             'ytid'          => $video->id->videoId,
                             'channel_id'    => $channel->id,
