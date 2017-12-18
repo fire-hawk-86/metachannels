@@ -20,6 +20,7 @@ Homestead.json
 .rocketeer/
 
 #custom
+storage/
 storage/framework/sessions/*
 storage/framework/views/*
 storage/logs/laravel.log
