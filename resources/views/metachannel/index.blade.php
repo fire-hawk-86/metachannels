@@ -23,17 +23,17 @@
               @endif
               <h3>{{ $metachannel->name }}</h3>
             </a>
+            @if($metachannel->user)
+              <p>Created by: <a href="{{ url('user/'.$metachannel->user->name) }}">{{ $metachannel->user->name }}</a></p>
+            @else
+              <p>Created by: Guest</p>
+            @endif
             <p>
               Channels:
               @foreach($metachannel->channels as $channel)
                 <a href="https://www.youtube.com/channel/{{ $channel->ytid }}">{{ $channel->name }}</a>{{ $loop->remaining ? ', ' : '' }}
               @endforeach
             </p>
-            @if($metachannel->user)
-              <p>Created by: <a href="{{ url('user/'.$metachannel->user->name) }}">{{ $metachannel->user->name }}</a></p>
-            @else
-              <p>Created by: Guest</p>
-            @endif
           </div>
         @endforeach
 

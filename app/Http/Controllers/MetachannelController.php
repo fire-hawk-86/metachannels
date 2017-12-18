@@ -137,6 +137,8 @@ class MetachannelController extends Controller
                     $this->add_channel($id, $channel);
                 }
             }
+
+            $this->update_channels($id);
         }
         else
         {
