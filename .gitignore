@@ -23,3 +23,4 @@ Homestead.json
 storage/framework/sessions/*
 storage/framework/views/*
 storage/logs/laravel.log
+storage/framework/cache/data/9b/99/9b994b2df6aac41f0036b017cbe7dc1a25ccf31b
