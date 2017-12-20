@@ -41,7 +41,7 @@ class MetachannelController extends Controller
      */
     public function create()
     {
-        return view('metachannel/create');
+        return view('metachannel.create');
     }
 
     /**
@@ -59,9 +59,7 @@ class MetachannelController extends Controller
 
         $metachannel = new Metachannel;
         if (Auth::check())
-        {
-            $metachannel->user_id   = Auth::id();
-        }
+            $metachannel->user_id = Auth::id();
         $metachannel->name          = $request->name;
         $metachannel->description   = $request->description;
         $metachannel->save();
@@ -101,7 +99,7 @@ class MetachannelController extends Controller
     public function edit($id)
     {
         $metachannel = Metachannel::find($id);
-        return view('metachannel/edit', ['metachannel' => $metachannel]);
+        return view('metachannel.edit', ['metachannel' => $metachannel]);
     }
 
     /**
