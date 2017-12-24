@@ -43,6 +43,7 @@
             </a>
             <p>{{ $video->uploaded_at->format('d. F Y') }} (<a href="https://www.youtube.com/channel/{{ $video->channel->ytid }}" target="_blank">{{ $video->channel->name }}</a>)</p>
             <p>{{ $video->description }}</p>
+            <hr style="visible-xs">
           </div>
         @endforeach
       </div>

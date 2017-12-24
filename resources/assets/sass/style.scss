@@ -1,3 +1,7 @@
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
 body {
   font-family: 'Open Sans', sans-serif;
 }
@@ -12,7 +16,7 @@ footer.navbar.navbar-static-bottom {
   background-color: #fff;
 }
 
-.navbar-static-bottom {
+.navbar-static-bottom{
   border-radius: 0px;
 }
 
@@ -29,15 +33,15 @@ footer.navbar.navbar-static-bottom {
   height: auto;
 }
 
-@media (min-width: 768px) {
-  .fixed-height {
+.fixed-height {
+  @media (min-width: $screen-sm) {
     height: 405px;
     overflow: hidden;
   }
 }
 
-@media (min-width: 768px) {
-  .fixed-height2 {
+.fixed-height2 {
+  @media (min-width: $screen-sm) {
     height: 350px;
     overflow: hidden;
   }
@@ -60,3 +64,8 @@ footer.navbar.navbar-static-bottom {
   margin-bottom: 0;
 }
 
+@media (min-width: $screen-sm) {  }
+
+@media (min-width: $screen-md) {  }
+
+@media (min-width: $screen-lg) {  }
