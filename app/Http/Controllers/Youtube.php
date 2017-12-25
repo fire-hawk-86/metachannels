@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use App\Http\Controllers\YoutubeApi;
 
 class Youtube extends Controller
 {
@@ -55,8 +54,22 @@ class Youtube extends Controller
         ]);
     }
 
-    public function channel($id)
+    public function channel($id, $pageToken = null)
     {
-    	//
+        $parameters = [];
+        $parameters['part']         = 'snippet';
+        $parameters['maxResults']   = 48;
+        $parameters['channelId']    = $id;
+        $parameters['type']         = 'video';
+        $parameters['order']        = 'date';
+        $parameters['safeSearch']   = 'none';
+        if ($pageToken) $parameters['pageToken'] = $pageToken;
+
+        $result = YoutubeApi::request('search', $parameters);
+
+    	return view('youtube.channel', [
+            'id' => $id,
+            'result' => $result,
+        ]);
     }
 }

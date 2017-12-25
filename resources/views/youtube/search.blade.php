@@ -24,7 +24,7 @@
                     <img src="https://img.youtube.com/vi/{{ $video->id->videoId }}/mqdefault.jpg" alt="">
                     <h3>{{ $video->snippet->title }}</h3>
                 </a>
-                <p>{{ $video->snippet->publishedAt }} (<a href="https://www.youtube.com/channel/{{ $video->snippet->channelId }}" target="_blank">{{ $video->snippet->channelTitle }}</a>)</p>
+                <p>{{ $video->snippet->publishedAt }} (<a href="channel/{{ $video->snippet->channelId }}" target="_blank">{{ $video->snippet->channelTitle }}</a>)</p>
                 <p>{{ $video->snippet->description }}</p>
             </div>
         @endforeach

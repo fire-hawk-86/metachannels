@@ -20,7 +20,7 @@
                 <iframe width="853" height="480" src="https://www.youtube.com/embed/{{ $id }}?rel=0&autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
             </div>
             <h3>{{$vid->snippet->title}}</h3>
-            <p style="float: left;">Channel: <a href="{{ url('https://www.youtube.com/channel/'.$vid->snippet->channelId) }}">{{ $vid->snippet->channelTitle }}</a></p>
+            <p style="float: left;">Channel: <a href="{{ url('channel/'.$vid->snippet->channelId) }}">{{ $vid->snippet->channelTitle }}</a></p>
             <p style="float: right;">{{ Carbon\Carbon::parse($vid->snippet->publishedAt)->format('d. F Y') }}</p>
             <p style="clear:both; white-space: pre-line; font-size: 13px;">{!! $vid->snippet->description !!}</p>
         </div>
@@ -40,7 +40,7 @@
                         <div style="margin-left: 130px; line-height: 1.6; max-height: 3.2em; overflow: hidden;" title="{{ $video->snippet->title }}">{{$video->snippet->title}}</div>
                     </a>
                     <div style="margin-left: 130px;">{{Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y')}}</div>
-                    <div style="margin-left: 130px; margin-bottom: 10px">Channel: <a href="{{ url('https://www.youtube.com/channel/'.$video->snippet->channelId) }}">{{ $video->snippet->channelTitle }}</a></div>
+                    <div style="margin-left: 130px; margin-bottom: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Channel: <a href="{{ url('channel/'.$video->snippet->channelId) }}">{{ $video->snippet->channelTitle }}</a></div>
                 </div>
             @endforeach
 

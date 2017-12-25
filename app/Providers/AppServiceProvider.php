@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Schema;
 use Validator;
 use Route;
 
@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
         Route::resourceVerbs([
             'create' => 'new',
         ]);
+
+        Schema::defaultStringLength(191);
     }
 
     /**

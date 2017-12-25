@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Metachannel;
 use App\Channel;
-use DB;
 use App\User;
 use Auth;
+use DB;
 
 class MetachannelController extends Controller
 {
@@ -55,6 +55,7 @@ class MetachannelController extends Controller
         $this->validate($request, [
             'name'          => 'required|unique:metachannels',
             'description'   => 'required',
+            'channels.*'    => 'nullable|url',
         ]);
 
         $metachannel = new Metachannel;

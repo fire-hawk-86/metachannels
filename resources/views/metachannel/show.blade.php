@@ -16,13 +16,13 @@
 
 @section('content')
     <div class="container">
-
+      
       <div class="row">
         <div class="col-sm-12">
           <h2>{{ $metachannel->name }}
             <small>(
               @foreach($metachannel->channels as $channel)
-                <a href="https://www.youtube.com/channel/{{ $channel->ytid }}" target="_blank">{{ $channel->name }}</a>{{ $loop->remaining ? ', ' : '' }}
+                <a href="{{ url('channel/'.$channel->ytid) }}" target="_blank">{{ $channel->name }}</a>{{ $loop->remaining ? ', ' : '' }}
               @endforeach
             )</small>
           </h2>
@@ -41,7 +41,7 @@
               <img src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg" alt="">
               <h3>{{ $video->name }}</h3>
             </a>
-            <p>{{ $video->uploaded_at->format('d. F Y') }} (<a href="https://www.youtube.com/channel/{{ $video->channel->ytid }}" target="_blank">{{ $video->channel->name }}</a>)</p>
+            <p>{{ $video->uploaded_at->format('d. F Y') }} (<a href="{{ url('channel/'.$video->channel->ytid) }}" target="_blank">{{ $video->channel->name }}</a>)</p>
             <p>{{ $video->description }}</p>
           </div>
         @endforeach

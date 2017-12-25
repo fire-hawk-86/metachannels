@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', $vid->snippet->title . ' - ')
+@section('title', 'Channel: '.$result->items[0]->snippet->channelTitle.' - ')
 
 @section('navbar')
     <li>
@@ -16,11 +16,30 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-            
+          <h1>Channel: {{ $result->items[0]->snippet->channelTitle }}</h1>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-
+        @foreach($result->items as $video)
+        <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <a href="{{ url('video/'.$video->id->videoId) }}">
+              <img src="https://img.youtube.com/vi/{{ $video->id->videoId }}/mqdefault.jpg" alt="">
+              <h4>{{ $video->snippet->title }}</h4>
+            </a>
+            <p>{{ Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y') }} (<a href="{{ url('channel/'.$video->snippet->channelId) }}" target="_blank">{{ $video->snippet->channelTitle }}</a>)</p>
+            <p style="font-size: 14px;">{{ $video->snippet->description }}</p>
         </div>
+        @endforeach
+      </div>
+      <div class="row">
+        <nav aria-label="...">
+          <ul class="pager">
+            @isset($result->prevPageToken)
+                <li class="previous"><a href="{{ url("channel/$id/$result->prevPageToken") }}"><span aria-hidden="true">&larr;</span> Newer</a></li>
+            @endisset
+            @isset($result->nextPageToken)
+                <li class="next"><a href="{{ url("channel/$id/$result->nextPageToken") }}">Older <span aria-hidden="true">&rarr;</span></a></li>
+            @endisset
+          </ul>
+        </nav>
       </div>
     </div>
 @endsection

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app()->getLocale() }}">
   <head>
     <meta charset="utf-8">
-    <title>@yield('title')Metachannels</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>@yield('title'){{ config('app.name', 'Laravel') }}</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>
     <!-- CSS -->
@@ -21,7 +21,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ url('/') }}"><span class="label label-danger lb-lg">Meta</span> Channels</a>
+          <a class="navbar-brand" href="{{ url('/') }}">
+            <span class="label label-danger lb-lg">Meta</span> Channels
+          </a>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -82,7 +84,7 @@
 
     <footer class="navbar navbar-default navbar-static-bottom">
       <div class="container">
-        <a href="{{url('info')}}" class="navbar-text" style="color: #aaa; margin-left: 0;">Why this Website?</a>
+        <a href="{{url('info')}}" class="navbar-text pull-left" style="color: #aaa; margin-left: 0;">Why this Website?</a>
         <span class="navbar-text pull-right" style="color: #aaa; margin-left: 0;">Created with Laravel 5 / Bootstrap 3</span>
       </div>
     </footer>

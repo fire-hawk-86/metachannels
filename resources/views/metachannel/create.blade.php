@@ -35,11 +35,11 @@
 
             <div id="channels" class="form-group">
               <label name="channels">Channels:</label>
-              <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('name') }}">
-              <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('name') }}">
-              <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('name') }}">
-              <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('name') }}">
-              <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('name') }}">
+              <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.0') }}">
+              <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.1') }}">
+              <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.2') }}">
+              <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.3') }}">
+              <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.4') }}">
             </div>
 
             <input type="submit" value="Create Metachannel" class="btn btn-success btn-lg btn-block">
