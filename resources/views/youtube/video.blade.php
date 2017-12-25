@@ -13,18 +13,24 @@
 @endsection
 
 @section('content')
+
+
     <div class="container">
       <div class="row">
         <div class="col-md-8">
+
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe width="853" height="480" src="https://www.youtube.com/embed/{{ $id }}?rel=0&autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
             </div>
             <h3>{{$vid->snippet->title}}</h3>
+            <vue-stars :value="5" :max="7" char="*"/>
             <p style="float: left;">Channel: <a href="{{ url('channel/'.$vid->snippet->channelId) }}">{{ $vid->snippet->channelTitle }}</a></p>
             <p style="float: right;">{{ Carbon\Carbon::parse($vid->snippet->publishedAt)->format('d. F Y') }}</p>
             <p style="clear:both; white-space: pre-line; font-size: 13px;">{!! $vid->snippet->description !!}</p>
+
         </div>
         <div class="col-md-4">
+
             <h3 class="first-item" title="youtube.com doesn't give you this option anymore">Related Videos<br><small>(instead of recomended)</small></h3>
             <div class="form-group">
                 <select class="form-control">
@@ -47,4 +53,10 @@
         </div>
       </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+
+    </script>
 @endsection
