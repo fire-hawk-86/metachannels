@@ -60,3 +60,20 @@ footer.navbar.navbar-static-bottom {
   margin-bottom: 0;
 }
 
+footer.navbar-static-bottom a,
+footer.navbar-static-bottom .navbar-text {
+  color: #aaa;
+}
+
+footer.navbar-static-bottom i {
+  color: #ddd;
+}
+
+footer.navbar-static-bottom .pull-left {
+  margin-left: 0;
+}
+
+footer.navbar-static-bottom .pull-right {
+  margin-right: 0;
+}
+
