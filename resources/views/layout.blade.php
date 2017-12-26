@@ -82,7 +82,9 @@
         </div>
       </nav>
 
-      @yield('content')
+      <div class="content">
+        @yield('content')
+      </div>
 
       <footer class="navbar navbar-default navbar-static-bottom">
         <div class="container">

@@ -2,7 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-body > .container {
+.content {
   min-height: calc(100vh - 74px - 73px);
 }
 
