@@ -20,4 +20,7 @@ Homestead.json
 .rocketeer/
 
 #custom
+public/css/
+public/js/
+public/fonts/
 public/prepros-6.config
