@@ -20,24 +20,29 @@ body {
 
 .col-sm-6 {
   margin-top: 30px;
-}
 
-.col-sm-6 img {
-  width: 100%;
-  height: auto;
+  img {
+    width: 100%;
+    height: auto;
+    transition: .5s;
+  }
+
+  a:hover img {
+    box-shadow: 0 0 50px #B1C8B4;
+  }
 }
 
 .fixed-height {
   @media (min-width: $screen-sm) {
     height: 405px;
-    overflow: hidden;
+    //overflow: hidden;
   }
 }
 
 .fixed-height2 {
   @media (min-width: $screen-sm) {
     height: 350px;
-    overflow: hidden;
+    //overflow: hidden;
   }
 }
 
@@ -56,10 +61,10 @@ body {
 .custom-dropdown-form {
   padding: 7px;
   min-width: 200px;
-}
 
-.custom-dropdown-form .form-group:last-of-type {
-  margin-bottom: 0;
+  .form-group:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 footer.navbar-static-bottom {
