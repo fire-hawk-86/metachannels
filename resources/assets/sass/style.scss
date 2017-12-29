@@ -10,12 +10,6 @@ body {
   min-height: calc(100vh - 74px - 73px);
 }
 
-footer.navbar.navbar-static-bottom {
-  margin-bottom: 0;
-  margin-top: 22px;
-  background-color: #fff;
-}
-
 .navbar-static-bottom{
   border-radius: 0px;
 }
@@ -69,6 +63,9 @@ footer.navbar.navbar-static-bottom {
 }
 
 footer.navbar-static-bottom {
+  margin-bottom: 0;
+  margin-top: 22px;
+  //background-color: #fff;
   a,
   .navbar-text {
     color: #aaa;

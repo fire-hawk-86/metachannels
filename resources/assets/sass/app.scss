@@ -3,7 +3,9 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
-@import "variables";
+@import "./themes/slate/_variables.scss";
+$input-bg:                       $gray;
+$input-color:                    #eee;
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";

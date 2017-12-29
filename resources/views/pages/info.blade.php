@@ -25,9 +25,9 @@
             <p>
                 This Website solves multiple Problems I have with Youtube, here are some examples:
                 <ul>
-                    <li>Not wanting to use a Google Account</li>
                     <li>Being annoyed by recommended Videos instead of just seeing related Videos</li>
                     <li>Being able to organize the channels you watch in a better way than just one pile of all kinds of different channels</li>
+                    <li>Not wanting to use a Google Account</li>
                 </ul>
             </p>
         </div>
