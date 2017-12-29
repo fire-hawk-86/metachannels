@@ -51,3 +51,9 @@
       </div><!-- .row -->
     </div><!-- .container -->
 @endsection
+
+@section('scripts')
+    <script>
+
+    </script>
+@endsection
