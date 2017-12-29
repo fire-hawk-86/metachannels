@@ -22,7 +22,7 @@
                 <h2>{{ $metachannel->name }}
                     <small>(
                         @foreach($metachannel->channels as $channel)
-                        <a href="{{ url('channel/'.$channel->ytid) }}" target="_blank">{{ $channel->name }}</a>{{ $loop->remaining ? ', ' : '' }}
+                        <a href="{{ url('channel/'.$channel->ytid) }}">{{ $channel->name }}</a>{{ $loop->remaining ? ', ' : '' }}
                         @endforeach
                     )</small>
                 </h2>
