@@ -47,6 +47,10 @@ footer.navbar.navbar-static-bottom {
   margin-top: 20px;
 }
 
+.header-margin-fix {
+  margin-top: 11px;
+}
+
 .first-item {
   margin-top: 0;
 }
