@@ -6,7 +6,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-body > .container {
+.content {
   min-height: calc(100vh - 74px - 73px);
 }
 
@@ -62,6 +62,25 @@ footer.navbar.navbar-static-bottom {
 
 .custom-dropdown-form .form-group:last-of-type {
   margin-bottom: 0;
+}
+
+footer.navbar-static-bottom {
+  a,
+  .navbar-text {
+    color: #aaa;
+  }
+
+  i {
+    color: #ddd;
+  }
+
+  .pull-left {
+    margin-left: 0;
+  }
+
+  .pull-right {
+    margin-right: 0;
+  }
 }
 
 @media (min-width: $screen-sm) {  }

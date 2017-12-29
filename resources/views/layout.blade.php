@@ -82,12 +82,23 @@
         </div>
       </nav>
 
-      @yield('content')
+      <div class="content">
+        @yield('content')
+      </div>
 
       <footer class="navbar navbar-default navbar-static-bottom">
         <div class="container">
-          <a href="{{url('info')}}" class="navbar-text pull-left" style="color: #aaa; margin-left: 0;">Why this Website?</a>
-          <span class="navbar-text pull-right" style="color: #aaa; margin-right: 0;">Created with Laravel 5 / Bootstrap 3</span>
+          <span class="navbar-text pull-left">
+            <a href="{{url('info')}}">Why this Website?</a>
+            <i>|</i>
+            <a href="#">Contact</a>
+          </span>
+
+          <span class="navbar-text pull-right">
+            Created with Laravel 5
+            <i>/</i>
+            Bootstrap 3
+          </span>
         </div>
       </footer>
       <!-- JS -->
