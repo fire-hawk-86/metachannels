@@ -91,6 +91,8 @@
                 <span class="navbar-text pull-left">
                     <a href="{{url('info')}}">Why this Website?</a>
                     <i>|</i>
+                    <a href="https://github.com/fire-hawk-86/metachannels">Github</a>
+                    <i>|</i>
                     <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EYTZMVK7XVRJE" target="_blank">Donate</a>
                     <i>|</i>
                     <a href="mailto:info@metachannels.ga">Contact</a>
