@@ -19,7 +19,8 @@ body {
 }
 
 .col-sm-6 {
-  margin-top: 30px;
+  margin-top: 10px;
+  padding-top: 20px;
 
   img {
     width: 100%;
@@ -28,21 +29,23 @@ body {
   }
 
   a:hover img {
-    box-shadow: 0 0 50px #B1C8B4;
+    box-shadow: 0 0 20px #B1C8B4;
   }
 }
 
 .fixed-height {
   @media (min-width: $screen-sm) {
     height: 405px;
-    //overflow: hidden;
+    overflow-x: visible;
+    overflow-y: hidden;
   }
 }
 
 .fixed-height2 {
   @media (min-width: $screen-sm) {
     height: 350px;
-    //overflow: hidden;
+    overflow-x: visible;
+    overflow-y: hidden;
   }
 }
 

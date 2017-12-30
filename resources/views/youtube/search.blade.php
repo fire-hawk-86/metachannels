@@ -28,7 +28,7 @@
                     <img src="https://img.youtube.com/vi/{{ $video->id->videoId }}/mqdefault.jpg" alt="">
                     <h3 class="header-margin-fix">{{ $video->snippet->title }}</h3>
                 </a>
-                <p>{{ $video->snippet->publishedAt }} (<a href="channel/{{ $video->snippet->channelId }}" target="_blank">{{ $video->snippet->channelTitle }}</a>)</p>
+                <p>{{ Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y') }} (<a href="{{ url('channel/'.$video->snippet->channelId) }}">{{ $video->snippet->channelTitle }}</a>)</p>
                 <p>{{ $video->snippet->description }}</p>
                 <hr class="visible-xs-block">
             </div>
