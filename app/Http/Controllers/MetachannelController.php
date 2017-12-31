@@ -259,8 +259,21 @@ class MetachannelController extends Controller
         $user = User::where('name', $user)->firstOrFail();
         $metachannels = Metachannel::where('user_id', $user->id)->get();
 
+        // if someone is logged in
+        if(Auth::check())
+        {
+            // if you are the user of this metachannel list
+            if (Auth::user()->name == $user->name) {
+                $title = "My Metachannels";
+            }
+        }
+        else
+        {
+            $title = "Metachannels of $user->name";
+        }
+
         return view('metachannel.index', [
-            'title' => "Metachannels of $user->name",
+            'title' => $title,
             'metachannels' => $metachannels,
         ]);
     }

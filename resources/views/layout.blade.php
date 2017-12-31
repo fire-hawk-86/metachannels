@@ -65,6 +65,12 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
+                                    <a href="{{ url('user/'.Auth::user()->name) }}">Metachannels</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('user/'.Auth::user()->name.'/channels') }}">New Videos</a>
+                                </li>
+                                <li>
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
