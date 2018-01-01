@@ -12,6 +12,7 @@
             {{ csrf_field() }}
         </form>
     </li>
+    @parent
 @endsection
 
 @section('content')

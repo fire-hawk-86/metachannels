@@ -2,6 +2,7 @@
 
 @section('navbar')
     <li><a href="{{ url('meta/new') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New</a></li>
+    @parent
 @endsection
 
 @section('content')

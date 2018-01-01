@@ -10,6 +10,7 @@
             <input name="_token" type="hidden" value="{{ csrf_token() }}">
         </form>
     </li>
+    @parent
 @endsection
 
 @section('content')

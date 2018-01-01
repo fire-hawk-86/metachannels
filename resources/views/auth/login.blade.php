@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('navbar')
+<li><a href="{{ route('login') }}">Login</a></li>
+<li><a href="{{ route('register') }}">Register</a></li>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
