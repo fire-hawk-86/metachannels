@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
-
+use SimpleXMLElement;
 use App\Metachannel;
 use App\Channel;
 use App\User;
@@ -170,6 +171,13 @@ class MetachannelController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Add a channel to the specified metachannel.
+     *
+     * @param  int  $metachannelId
+     * @param  str  $url
+     * @return void
+     */
     public function add_channel($metachannelId, $url)
     {
         $url_parts = explode('/', $url);
@@ -213,11 +221,23 @@ class MetachannelController extends Controller
         }
     }
 
+    /**
+     * Remove all associations between the specified metachannel and it's channels.
+     *
+     * @param  int  $metachannelId
+     * @return void
+     */
     public function remove_all_channels($metachannelId)
     {
         DB::table('channel_metachannel')->where('metachannel_id', $metachannelId)->delete();
     }
 
+    /**
+     * Update all channels associated with the specified metachannel.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update_channels($id)
     {
         $metachannel = Metachannel::find($id);
@@ -254,6 +274,12 @@ class MetachannelController extends Controller
         return redirect('/meta/'.$id);
     }
 
+    /**
+     * Show all metachannels of the specified user.
+     *
+     * @param  int  $user
+     * @return \Illuminate\Http\Response
+     */
     public function index_user($user)
     {
         $user = User::where('name', $user)->firstOrFail();
@@ -276,5 +302,38 @@ class MetachannelController extends Controller
             'title' => $title,
             'metachannels' => $metachannels,
         ]);
+    }
+
+    /**
+     * Export all metachannels associated with the user to xml.
+     *
+     * @param  str  $user
+     * @return void
+     */
+    public function export_xml($user)
+    {
+        $user = User::where('name', $user)->first();
+        $metachannels = Metachannel::where('user_id', $user->id)->get();
+        
+        $xml_metachannels = new SimpleXMLElement('<metachannels/>');
+
+        foreach ($metachannels as $metachannel) {
+            $xml_metachannel = $xml_metachannels->addChild('metachannel');
+            $xml_metachannel->addChild('name', $metachannel->name);
+            $xml_metachannel->addChild('description', $metachannel->description);
+            $xml_channels = $xml_metachannel->addChild('channels');
+            foreach ($metachannel->channels as $channel) {
+                $xml_channel = $xml_channels->addChild('channel');
+                $xml_channel->addChild('name', $channel->name);
+                $xml_channel->addChild('id', $channel->ytid);
+            }
+        }
+
+        $response = Response::make($xml_metachannels->asXML());
+
+        return $response
+            ->header('Content-Type', 'text/xml')
+            ->header('Content-Disposition', 'attachment; filename="metachannels.xml"')
+        ;
     }
 }

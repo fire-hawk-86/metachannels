@@ -21,7 +21,8 @@ Route::get('search/{query}',			'Youtube@search');
 Route::post('search',					'Youtube@search_get');
 
 Route::resource('meta',			'MetachannelController');
-Route::get('user/{user}',			'MetachannelController@index_user');
+Route::get('user/{user}',		'MetachannelController@index_user');
+Route::get('user/{user}/xml',	'MetachannelController@export_xml');
 Route::get('addchannel/{test}', 'MetachannelController@add_channel');
 Route::get('meta/{id}/update',	'MetachannelController@update_channels');
 
