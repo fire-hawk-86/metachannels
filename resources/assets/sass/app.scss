@@ -4,8 +4,9 @@
 
 // Variables
 @import "./themes/slate/_variables.scss";
-$input-bg:                       $gray;
-$input-color:                    #eee;
+$input-bg:          $gray;
+$input-color:       #eee;
+$state-danger-text: #EE5F5B;
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
