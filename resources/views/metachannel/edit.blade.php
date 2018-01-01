@@ -1,9 +1,10 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title',  'Edit '.$metachannel->name.' - ')
 
 @section('content')
     <div class="container">
+        <!-- Errors -->
         @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

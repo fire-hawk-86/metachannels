@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title', $vid->snippet->title . ' - ')
 
@@ -16,14 +16,15 @@
     <div class="container">
       <div class="row">
         <!-- Main -->
-        <div class="col-md-8">
+        <div class="col-md-8" id="main">
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe width="853" height="480" src="https://www.youtube.com/embed/{{ $id }}?rel=0&autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
             </div>
+            <a id="view-button" class="btn btn-default btn-sm pull-right" style="margin-top: 11px;" href="#">Change View</a>
             <h3>{{$vid->snippet->title}}</h3>
             <p style="float: left;">Channel: <a href="{{ url('channel/'.$vid->snippet->channelId) }}">{{ $vid->snippet->channelTitle }}</a></p>
             <p style="float: right;">{{ Carbon\Carbon::parse($vid->snippet->publishedAt)->format('d. F Y') }}</p>
-            <p style="clear:both; white-space: pre-line; font-size: 13px;">{!! $vid->snippet->description !!}</p>
+            <p style="clear:both; white-space: pre-line; font-size: 13px; margin-bottom: 20px;">{!! $vid->snippet->description !!}</p>
         </div>
         <!-- Sidebar -->
         <div class="col-md-4">
@@ -54,6 +55,10 @@
 
 @section('scripts')
     <script>
-
+        $(document).ready(function(){
+            $("h3").click(function(){
+                alert("test");
+            });
+        };
     </script>
 @endsection
