@@ -37,7 +37,7 @@
                         @if (Auth::guest())
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span class="glyphicon glyphicon-user"></span>  Login
+                                <span class="glyphicon glyphicon-user"></span> Login
                             </a>
                             <div class="dropdown-menu custom-dropdown-form">
                                 <form method="POST" action="{{ route('login') }}">
@@ -60,7 +60,7 @@
                         @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">

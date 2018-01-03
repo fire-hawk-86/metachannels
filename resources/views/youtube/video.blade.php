@@ -53,13 +53,3 @@
       </div>
     </div>
 @endsection
-
-@section('scripts')
-    <script>
-        $(document).ready(function(){
-            $("h3").click(function(){
-                alert("test");
-            });
-        };
-    </script>
-@endsection
