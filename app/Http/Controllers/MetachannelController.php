@@ -95,11 +95,10 @@ class MetachannelController extends Controller
         $last_refresh = Carbon::parse($metachannel->last_refresh);
         // have an amount of minutes past ?
         $minutes = $last_refresh->diffInMinutes(Carbon::now());
-        if($minutes > 4)
+        if($minutes > 0)
         {
             // then update the channels
             $this->update_channels($id);
-            dd('updated');
         }
 
         return view('metachannel.show', [
