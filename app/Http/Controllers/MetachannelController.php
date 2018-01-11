@@ -89,6 +89,9 @@ class MetachannelController extends Controller
     {
         $metachannel = Metachannel::find($id);
 
+        // update
+        $this->update_channels($id);
+
         return view('metachannel.show', ['metachannel' => $metachannel]);
     }
 
