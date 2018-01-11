@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use SimpleXMLElement;
+use Carbon\Carbon;
 use App\Metachannel;
 use App\Channel;
 use App\User;
@@ -64,6 +65,7 @@ class MetachannelController extends Controller
             $metachannel->user_id = Auth::id();
         $metachannel->name          = $request->name;
         $metachannel->description   = $request->description;
+        $metachannel->last_refresh  = Carbon::now()->toDateTimeString();
         $metachannel->save();
 
         foreach ($request->channels as $channel)
@@ -89,8 +91,17 @@ class MetachannelController extends Controller
     {
         $metachannel = Metachannel::find($id);
 
-        // update
-        $this->update_channels($id);
+        // last time refreshed the videos of the list of channels
+        $last_refresh = Carbon::parse($metachannel->last_refresh);
+        // have an amount of minutes past ?
+        if($last_refresh->diffInMinutes(Carbon::now()) > 10)
+        {
+            // then update the channels
+            $this->update_channels($id);
+
+            $metachannel->last_refresh = Carbon::now()->toDateTimeString();
+            $metachannel->save();
+        }
 
         return view('metachannel.show', ['metachannel' => $metachannel]);
     }

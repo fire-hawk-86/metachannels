@@ -20,6 +20,7 @@ class CreateMetachannelsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->timestamps();
+            $table->dateTime('last_refresh');
         });
     }
 
