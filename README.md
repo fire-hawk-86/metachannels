@@ -9,8 +9,9 @@
 ## Website
 
 You can test "Metachannels" [here](http://metachannels.ga/)
-You can create Metachannels as a Guest. But if you want to edit it later, you need an account.
+You can create Metachannels as a Guest. But if you want to edit them later, you need an account.
 
 ## Screenshot
 
 ![screenshot](https://i.imgur.com/YBHIYDb.jpg)
+
