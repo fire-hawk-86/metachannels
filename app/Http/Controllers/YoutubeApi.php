@@ -22,4 +22,9 @@ class YoutubeApi extends Controller
 
         return $obj;
     }
+
+    static public function combineResponses($responses)
+    {
+
+    }
 }

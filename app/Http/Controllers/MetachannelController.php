@@ -93,17 +93,19 @@ class MetachannelController extends Controller
 
         // last time refreshed the videos of the list of channels
         $last_refresh = Carbon::parse($metachannel->last_refresh);
+        $now = Carbon::now();
         // have an amount of minutes past ?
-        $minutes = $last_refresh->diffInMinutes(Carbon::now());
+        $minutes = $last_refresh->diffInMinutes($now);
         if($minutes > 0)
         {
             // then update the channels
             $this->update_channels($id);
+            $last_refresh = $now;
         }
 
         return view('metachannel.show', [
             'metachannel' => $metachannel,
-            'minutes' => $minutes,
+            'minutes' => $last_refresh->diffForHumans($now),
         ]);
     }
 
