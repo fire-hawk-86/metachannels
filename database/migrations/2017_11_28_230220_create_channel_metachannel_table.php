@@ -14,8 +14,8 @@ class CreateChannelMetachannelTable extends Migration
     public function up()
     {
         Schema::create('channel_metachannel', function (Blueprint $table) {
-            $table->integer('channel_id');
-            $table->integer('metachannel_id');
+            $table->unsignedInteger('channel_id');
+            $table->unsignedInteger('metachannel_id');
         });
     }
 
