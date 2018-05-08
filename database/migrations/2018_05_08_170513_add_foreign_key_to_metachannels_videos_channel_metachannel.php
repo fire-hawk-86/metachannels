@@ -35,7 +35,16 @@ class AddForeignKeyToMetachannelsVideosChannelMetachannel extends Migration
     public function down()
     {
         Schema::table('metachannels', function (Blueprint $table) {
-            //
+            $table->dropForeign(['user_id']);
+        });
+
+        Schema::table('videos', function (Blueprint $table) {
+            $table->dropForeign(['channel_id']);
+        });
+
+        Schema::table('channel_metachannel', function (Blueprint $table) {
+            $table->dropForeign(['channel_id']);
+            $table->dropForeign(['metachannel_id']);
         });
     }
 }
