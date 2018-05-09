@@ -13,7 +13,7 @@ class RemoveUserController extends Controller
 		    if (Auth::id() == $id) {
 		    	Auth::logout();
 		    	User::find($id)->delete();
-		    	return redirect('/');
+		    	return redirect('/')->with('message', 'Account has been successfully removed!');
 		    }
 		    else {
 		    	"You can't delete other users!";
