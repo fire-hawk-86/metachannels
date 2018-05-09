@@ -15,12 +15,23 @@ class YoutubeApi extends Controller
     	$parameters['key'] = env('GOOGLE_API_KEY');
 
     	// retrieve data as json
-    	$json = file_get_contents($url.'?'.http_build_query($parameters));
+        try
+        {
+            $json = file_get_contents($url.'?'.http_build_query($parameters));
 
-    	// convert json to object
-        $obj = json_decode($json);
+            // convert json to object
+            $obj = json_decode($json);
 
-        return $obj;
+            return $obj;
+        }
+        catch (Exception $e)
+        {
+            // echo 'Caught exception: ',  $e->getMessage(), "\n";
+
+            // return empty json instead
+            return json_decode('{}');
+        }
+    	
     }
 
     static public function combineResponses($responses)
