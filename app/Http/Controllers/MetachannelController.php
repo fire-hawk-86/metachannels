@@ -203,12 +203,18 @@ class MetachannelController extends Controller
         {
             $channelYtid = $url_parts[4];
             echo 'channel ID is '.$channelYtid;
-            $channel_data = json_decode( file_get_contents('https://www.googleapis.com/youtube/v3/channels?part=snippet&id='.$channelYtid.'&key='.env('GOOGLE_API_KEY')) );
+            $channel_data = YoutubeApi::request('channels', [
+                'part' => 'snippet,id',
+                'id'   => $channelYtid,
+            ]);
         }
         elseif ($url_parts[3] == 'user') {
             $channelName = $url_parts[4];
             echo 'channel name is '.$channelName;
-            $channel_data = json_decode( file_get_contents('https://www.googleapis.com/youtube/v3/channels?part=snippet&forUsername='.$channelName.'&key='.env('GOOGLE_API_KEY')) );
+            $channel_data = YoutubeApi::request('channels', [
+                'part'        => 'snippet',
+                'forUsername' => $channelName,
+            ]);
         }
 
         if(count(Channel::where('ytid', $channel_data->items[0]->id)->get()->all()) == 0)
