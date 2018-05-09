@@ -106,6 +106,22 @@
         </nav>
 
         <div class="content">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        @if (session('message'))
+                            <div class="alert alert-info">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                                {!! session('message') !!}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            
             @yield('content')
         </div>
 
