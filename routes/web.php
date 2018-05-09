@@ -26,6 +26,8 @@ Route::get('user/{user}/xml',	'MetachannelController@export_xml');
 Route::get('addchannel/{test}', 'MetachannelController@add_channel');
 Route::get('meta/{id}/update',	'MetachannelController@update_channels');
 
+Route::delete('user/{id}', 'RemoveUserController');
+
 // Redirects
 Route::get('meta', function() {	return redirect('/'); });
 

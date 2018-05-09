@@ -73,7 +73,18 @@
                                 <li>
                                     <a href="{{ url('user/'.Auth::user()->name.'/xml') }}">Export</a>
                                 </li>
-                                <li class="divider"></li> 
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('remove-user-form').submit();">
+                                        Remove User
+                                    </a>
+                                    <form id="remove-user-form" action="{{ url( 'user/'.Auth::id() ) }}" method="POST" style="display: none;">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
