@@ -99,7 +99,7 @@ class MetachannelController extends Controller
         
         try
         {
-            if($minutes > 0)
+            if($minutes > 14)
             {
                 // then update the channels
                 $this->update_channels($id);
