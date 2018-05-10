@@ -26,8 +26,8 @@ class YoutubeApi extends Controller
         }
         catch (Exception $e)
         {
-            // echo 'Caught exception: ',  $e->getMessage(), "\n";
-
+            // flash error message to session
+            session()->flash('message', 'Caught exception: '.$e->getMessage());
             // return empty json instead
             return json_decode('{}');
         }
