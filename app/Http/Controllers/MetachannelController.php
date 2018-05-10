@@ -68,15 +68,24 @@ class MetachannelController extends Controller
         $metachannel->last_refresh  = Carbon::now()->toDateTimeString();
         $metachannel->save();
 
-        foreach ($request->channels as $channel)
+        try
         {
-            if($channel != '')
+            foreach ($request->channels as $channel)
             {
-                $this->add_channel($metachannel->id, $channel);
+                if($channel != '')
+                {
+                    $this->add_channel($metachannel->id, $channel);
+                }
             }
-        }
 
-        $this->update_channels($metachannel->id);
+            $this->update_channels($metachannel->id);
+        }
+        catch (\Exception $e)
+        {
+            session()->flash('message', 'It seams that the Youtube Api requests have all been used up. To create a Metachannel, please try again later. Error: '.$e->getMessage());
+            $metachannel->delete();
+        }
+        
 
         return redirect('/');
     }
@@ -276,36 +285,46 @@ class MetachannelController extends Controller
     public function update_channels($id)
     {
         $metachannel = Metachannel::find($id);
-        foreach ($metachannel->channels as $channel)
+        
+        try
         {
-            $obj = YoutubeApi::request('search', [
-                'channelId' => $channel->ytid,
-                'part'  => 'snippet,id',
-                'order' => 'date',
-                'maxResults' => 50,
-                'publishedAfter' => '2017-11-01T00:00:00Z',
-            ]);
-
-            $videos = $obj->items;
-
-            foreach ($videos as $video)
+            foreach ($metachannel->channels as $channel)
             {
-                if($video->id->kind == 'youtube#video')
-                {
-                    if( count( DB::table('videos')->where('ytid', $video->id->videoId)->get()->all() ) == 0)
-                    {
-                        DB::table('videos')->insert([
-                            'ytid'          => $video->id->videoId,
-                            'channel_id'    => $channel->id,
-                            'name'          => $video->snippet->title,
-                            'description'   => $video->snippet->description,
-                            'uploaded_at'   => date("Y-m-d G:i:s", strtotime($video->snippet->publishedAt))
-                        ]);
+                $obj = YoutubeApi::request('search', [
+                    'channelId' => $channel->ytid,
+                    'part'  => 'snippet,id',
+                    'order' => 'date',
+                    'maxResults' => 50,
+                    'publishedAfter' => '2017-11-01T00:00:00Z',
+                ]);
 
+                $videos = $obj->items;
+
+                foreach ($videos as $video)
+                {
+                    if($video->id->kind == 'youtube#video')
+                    {
+                        if( count( DB::table('videos')->where('ytid', $video->id->videoId)->get()->all() ) == 0)
+                        {
+                            DB::table('videos')->insert([
+                                'ytid'          => $video->id->videoId,
+                                'channel_id'    => $channel->id,
+                                'name'          => $video->snippet->title,
+                                'description'   => $video->snippet->description,
+                                'uploaded_at'   => date("Y-m-d G:i:s", strtotime($video->snippet->publishedAt))
+                            ]);
+
+                        }
                     }
                 }
             }
         }
+        catch (\Exception $e)
+        {
+            session()->flash('message', "Can't update right now. Too many Api uses probably. Error: ".$e->getMessage());
+            return redirect('/meta/'.$id);
+        }
+        
 
         // update last_refresh column
         $metachannel->last_refresh = Carbon::now()->toDateTimeString();
