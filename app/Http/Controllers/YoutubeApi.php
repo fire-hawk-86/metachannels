@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Exception;
 
 class YoutubeApi extends Controller
 {
@@ -15,23 +16,12 @@ class YoutubeApi extends Controller
     	$parameters['key'] = env('GOOGLE_API_KEY');
 
     	// retrieve data as json
-        try
-        {
-            $json = file_get_contents($url.'?'.http_build_query($parameters));
+        $json = file_get_contents($url.'?'.http_build_query($parameters));
 
-            // convert json to object
-            $obj = json_decode($json);
+        // convert json to object
+        $obj = json_decode($json);
 
-            return $obj;
-        }
-        catch (Exception $e)
-        {
-            // flash error message to session
-            session()->flash('message', 'Caught exception: '.$e->getMessage());
-            // return empty json instead
-            return json_decode('{}');
-        }
-    	
+        return $obj;
     }
 
     static public function combineResponses($responses)
