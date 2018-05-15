@@ -35,13 +35,14 @@
                         <input type="text" title="{{ $channel->name }}" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ url('https://www.youtube.com/channel/'.$channel->ytid) }}">
                     </div>
                     @endforeach
-                    <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                    <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                    <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                    <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                    <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                    <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                    
+                    <div class="form-group">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+                    </div>
                     <input type="submit" value="Update Metachannel" class="btn btn-success btn-lg btn-block">
                     <input type="hidden" name="_token" value="{{ Session::token() }}">
                     {{ method_field('PUT') }}
