@@ -30,11 +30,18 @@
                     </div>
                     <div id="channels" class="form-group">
                         <label name="channels">Channels:</label>
-                        <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.0') }}">
-                        <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.1') }}">
-                        <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.2') }}">
-                        <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.3') }}">
-                        <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.4') }}">
+                        <noscript>
+                            <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.0') }}">
+                            <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.1') }}">
+                            <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.2') }}">
+                            <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.3') }}">
+                            <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.4') }}">
+                        </noscript>
+                        <channel-search></channel-search>
+                        <channel-search></channel-search>
+                        <channel-search></channel-search>
+                        <channel-search></channel-search>
+                        <channel-search></channel-search>
                     </div>
                     <input type="submit" value="Create Metachannel" class="btn btn-success btn-lg btn-block">
                     <input type="hidden" name="_token" value="{{ Session::token() }}">

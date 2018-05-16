@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('channel-search', require('./components/ChannelSearch.vue'));
 
 const app = new Vue({
 	el: '#app'

@@ -155,9 +155,9 @@
                 </span>
             </div>
         </footer>
-        <!-- JS -->
-        <script src="{{ asset('js/app.js') }}"></script>
-        @yield('scripts')
     </div>
+    <!-- JS -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>

@@ -6,6 +6,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+#app {
+  overflow: hidden;
+}
+
 .content {
   min-height: calc(100vh - 74px - 73px);
 }

@@ -24,6 +24,18 @@ class YoutubeApi extends Controller
         return $obj;
     }
 
+    static public function search_youtube_channel($query)
+    {
+        $obj = YoutubeApi::request('search', [
+            'part'       => 'snippet',
+            'maxResults' => 5,
+            'q'          => $query,
+            'type'       => 'channel',
+        ]);
+
+        return response()->json($obj);
+    }
+
     static public function combineResponses($responses)
     {
 

@@ -35,6 +35,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// search youtube channels
+Route::get('searchyoutubechannel/{query}', 'YoutubeApi@search_youtube_channel')->name('searchyoutubechannel');
+
 // Static Pages
 Route::get('/{page_name}', function($page_name) {
 	return view("pages/$page_name");
