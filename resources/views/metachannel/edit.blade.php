@@ -37,12 +37,12 @@
                     @endforeach
                     <div class="form-group">
                         <noscript>
-                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
-                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="" placeholder="">
+                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
+                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
+                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
+                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
+                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
+                            <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
                         </noscript>
                         <channel-search></channel-search>
                         <channel-search></channel-search>
