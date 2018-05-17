@@ -16,7 +16,7 @@
             return {
                 value: '',
                 channels: [],
-                url: 'http://metachannels.local/searchyoutubechannel/',
+                url: window.envAppUrl+'/searchyoutubechannel/',
                 timeout: null
             }
         },
@@ -30,7 +30,7 @@
             },
             getJson: function () {
                 var self = this;
-                axios.get('http://metachannels.local/searchyoutubechannel/'+self.value)
+                axios.get(self.url+self.value)
                     .then( function (response) {
                         self.channels.length = 0;
                         for (var i in response.data.items) {

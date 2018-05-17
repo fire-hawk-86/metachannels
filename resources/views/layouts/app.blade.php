@@ -157,6 +157,9 @@
         </footer>
     </div>
     <!-- JS -->
+    <script>
+        window.envAppUrl = '{{ env('APP_URL') }}';
+    </script>
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
 </body>
