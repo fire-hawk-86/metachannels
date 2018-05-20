@@ -106,28 +106,15 @@ class MetachannelController extends Controller
         // have an amount of minutes past ?
         $minutes = $last_refresh->diffInMinutes($now);
 
-        //dd($last_refresh, $now);
-
-        try
+        if($minutes > 14)
         {
-            if($minutes > 14)
-            {
-                // update last_refresh column
-                $metachannel->last_refresh = Carbon::now()->toDateTimeString();
-                $metachannel->save();
+            // update last_refresh column
+            $metachannel->last_refresh = Carbon::now()->toDateTimeString();
+            $metachannel->save();
 
-                // then update the channels
-                $this->update_channels($id);
-                $last_refresh = $now;
-            }
-        }
-        catch (\Exception $e)
-        {
-            return view('metachannel.show', [
-                'metachannel' => $metachannel,
-                'minutes' => $last_refresh->diffForHumans($now),
-                'message' => 'Error(MetachannelController@show): '+$e->getMessage(),
-            ]);
+            // then update the channels
+            $this->update_channels($id);
+            $last_refresh = $now;
         }
 
         return view('metachannel.show', [
