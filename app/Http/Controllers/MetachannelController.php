@@ -82,7 +82,7 @@ class MetachannelController extends Controller
         }
         catch (\Exception $e)
         {
-            session()->flash('message', 'It seams that the Youtube Api requests have all been used up. To create a Metachannel, please try again later. Error: '.$e->getMessage());
+            session()->flash('message', 'Error(MetachannelController@store): '.$e->getMessage());
             $metachannel->delete();
         }
         
@@ -105,11 +105,17 @@ class MetachannelController extends Controller
         $now = Carbon::now();
         // have an amount of minutes past ?
         $minutes = $last_refresh->diffInMinutes($now);
-        
+
+        //dd($last_refresh, $now);
+
         try
         {
             if($minutes > 14)
             {
+                // update last_refresh column
+                $metachannel->last_refresh = Carbon::now()->toDateTimeString();
+                $metachannel->save();
+
                 // then update the channels
                 $this->update_channels($id);
                 $last_refresh = $now;
@@ -120,7 +126,7 @@ class MetachannelController extends Controller
             return view('metachannel.show', [
                 'metachannel' => $metachannel,
                 'minutes' => $last_refresh->diffForHumans($now),
-                'message' => $e->getMessage(),
+                'message' => 'Error(MetachannelController@show): '+$e->getMessage(),
             ]);
         }
 
@@ -321,14 +327,9 @@ class MetachannelController extends Controller
         }
         catch (\Exception $e)
         {
-            session()->flash('message', "Can't update right now. Too many Api uses probably. Error: ".$e->getMessage());
+            session()->flash('message', 'Error(MetachannelController@update_channels): '.$e->getMessage());
             return redirect('/meta/'.$id);
         }
-        
-
-        // update last_refresh column
-        $metachannel->last_refresh = Carbon::now()->toDateTimeString();
-        $metachannel->save();
 
         return redirect('/meta/'.$id);
     }
