@@ -19,9 +19,8 @@ Homestead.json
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
 
-#custom
-public/css/
-public/js/
-public/fonts/
-public/prepros-6.config
+# custom 
 metachannels.zip
+
+# security
+deploy.js
