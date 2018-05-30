@@ -106,7 +106,7 @@ class MetachannelController extends Controller
         // have an amount of minutes past ?
         $minutes = $last_refresh->diffInMinutes($now);
 
-        if($minutes > 14)
+        if($minutes > 59)
         {
             // update last_refresh column
             $metachannel->last_refresh = Carbon::now()->toDateTimeString();
