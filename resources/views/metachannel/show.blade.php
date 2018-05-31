@@ -4,7 +4,7 @@
 
 @section('navbar')
     <li><a href="{{ url("meta/$metachannel->id/edit") }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</a></li>
-    <li><a href="{{ url("meta/$metachannel->id/update") }}" title="{{ $minutes }}"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Update</a></li>
+    <li><a title="{{ $minutes }}"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Update</a></li>
     <li><a onclick="document.getElementById('delete-form').submit();" href="#"><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span> <span class="text-danger">Delete</span></a></li>
     <li>
         <form id="delete-form" method="POST" action="{{ url("meta/$metachannel->id") }}">
