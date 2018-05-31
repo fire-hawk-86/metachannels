@@ -82,7 +82,10 @@ class MetachannelController extends Controller
         }
         catch (\Exception $e)
         {
-            session()->flash('message', 'Error(MetachannelController@store): '.$e->getMessage());
+            if(env('APP_ENV') == 'local')
+                session()->flash('message', 'Error(MetachannelController@store): '.$e->getMessage());
+            elseif (env('APP_ENV') == 'production')
+                session()->flash('message', 'Error');
             $metachannel->delete();
         }
         
@@ -314,7 +317,10 @@ class MetachannelController extends Controller
         }
         catch (\Exception $e)
         {
-            session()->flash('message', 'Error(MetachannelController@update_channels): '.$e->getMessage());
+            if(env('APP_ENV') == 'local')
+                session()->flash('message', 'Error(MetachannelController@update_channels): '.$e->getMessage());
+            elseif (env('APP_ENV') == 'production')
+                session()->flash('message', 'Error');
             return redirect('/meta/'.$id);
         }
 
