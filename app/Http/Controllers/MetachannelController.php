@@ -290,7 +290,7 @@ class MetachannelController extends Controller
                     'channelId' => $channel->ytid,
                     'part'  => 'snippet,id',
                     'order' => 'date',
-                    'maxResults' => 50,
+                    'maxResults' => 10,
                     'publishedAfter' => '2017-11-01T00:00:00Z',
                 ]);
 
