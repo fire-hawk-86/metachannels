@@ -14,6 +14,11 @@ use DB;
 
 class MetachannelController extends Controller
 {
+    /**
+     * Authentication required for editing and removing Metachannels.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth', ['only' => [
@@ -88,7 +93,7 @@ class MetachannelController extends Controller
                 session()->flash('message', 'Error');
             $metachannel->delete();
         }
-        
+
 
         return redirect('/');
     }
@@ -281,7 +286,7 @@ class MetachannelController extends Controller
     public function update_channels($id)
     {
         $metachannel = Metachannel::find($id);
-        
+
         try
         {
             foreach ($metachannel->channels as $channel)
@@ -367,7 +372,7 @@ class MetachannelController extends Controller
     {
         $user = User::where('name', $user)->first();
         $metachannels = Metachannel::where('user_id', $user->id)->get();
-        
+
         $xml_metachannels = new SimpleXMLElement('<metachannels/>');
 
         foreach ($metachannels as $metachannel) {
