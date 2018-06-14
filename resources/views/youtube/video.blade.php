@@ -39,16 +39,18 @@
                 </select>
             </div>
             -->
-            @foreach ($related_videos->items as $video)
-            <div style="min-height: 78px; font-size: .8em; position: relative;">
-                <a href="{{ url('video/'.$video->id->videoId) }}">
-                    <img style="position: absolute; top: -11px; left: 0; clip: rect(11px,120px,79px,0px);" src="{{$video->snippet->thumbnails->default->url}}">
-                    <div style="margin-left: 130px; line-height: 1.6; max-height: 3.2em; overflow: hidden;" title="{{ $video->snippet->title }}">{{$video->snippet->title}}</div>
-                </a>
-                <div style="margin-left: 130px;">{{Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y')}}</div>
-                <div style="margin-left: 130px; margin-bottom: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Channel: <a href="{{ url('channel/'.$video->snippet->channelId) }}">{{ $video->snippet->channelTitle }}</a></div>
-            </div>
-            @endforeach
+            @isset($related_videos)
+                @foreach ($related_videos->items as $video)
+                <div style="min-height: 78px; font-size: .8em; position: relative;">
+                    <a href="{{ url('video/'.$video->id->videoId) }}">
+                        <img style="position: absolute; top: -11px; left: 0; clip: rect(11px,120px,79px,0px);" src="{{$video->snippet->thumbnails->default->url}}">
+                        <div style="margin-left: 130px; line-height: 1.6; max-height: 3.2em; overflow: hidden;" title="{{ $video->snippet->title }}">{{$video->snippet->title}}</div>
+                    </a>
+                    <div style="margin-left: 130px;">{{Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y')}}</div>
+                    <div style="margin-left: 130px; margin-bottom: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Channel: <a href="{{ url('channel/'.$video->snippet->channelId) }}">{{ $video->snippet->channelTitle }}</a></div>
+                </div>
+                @endforeach
+            @endisset
         </div>
       </div>
     </div>
