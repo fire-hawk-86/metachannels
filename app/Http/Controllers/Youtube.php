@@ -9,12 +9,12 @@ class Youtube extends Controller
 {
     public function video($id)
     {
-    	$related_videos = YoutubeApi::request('search', [
+    	/*$related_videos = YoutubeApi::request('search', [
     		'part'              => 'snippet',
             'maxResults'        => 25,
             'relatedToVideoId'  => $id,
             'type'              => 'video',
-    	]);
+    	]);*/
 
         $vid = YoutubeApi::request('videos', [
             'id'    => $id,
@@ -28,7 +28,7 @@ class Youtube extends Controller
 
         return view('youtube.video', [
             'id' => $id,
-            'related_videos' => $related_videos,
+            //'related_videos' => $related_videos,
             'vid' => $vid->items[0]
         ]);
     }
@@ -56,16 +56,19 @@ class Youtube extends Controller
 
     public function channel($id, $pageToken = null)
     {
-        $parameters = [];
-        $parameters['part']         = 'snippet';
-        $parameters['maxResults']   = 48;
-        $parameters['channelId']    = $id;
-        $parameters['type']         = 'video';
-        $parameters['order']        = 'date';
-        $parameters['safeSearch']   = 'none';
-        if ($pageToken) $parameters['pageToken'] = $pageToken;
+        $parameters = [
+            'id'   => $id,
+            'part' => 'contentDetails',
+        ];
+        $channel = YoutubeApi::request('channels', $parameters)->items[0];
 
-        $result = YoutubeApi::request('search', $parameters);
+        $parameters = [
+            'playlistId' => $channel->contentDetails->relatedPlaylists->uploads,
+            'maxResults' => 25,
+            'part'       => 'snippet',
+        ];
+        if ($pageToken) $parameters['pageToken'] = $pageToken;
+        $result = YoutubeApi::request('playlistItems', $parameters);
 
     	return view('youtube.channel', [
             'id' => $id,

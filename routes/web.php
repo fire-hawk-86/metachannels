@@ -46,6 +46,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('searchyoutubechannel/{query}', 'YoutubeApi@search_youtube_channel')->name('searchyoutubechannel');
 
+// Test
+
+Route::get('myip', function() {
+	return Request::ip();
+});
+
 // Static Pages
 
 Route::get('/{page_name}', function($page_name) {
