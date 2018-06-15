@@ -6,13 +6,13 @@
     <div class="container">
         <!-- Errors -->
         @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
         <!-- Content -->
         <div class="row">
@@ -30,18 +30,11 @@
                     </div>
                     <div id="channels" class="form-group">
                         <label name="channels">Channels:</label>
-                        <noscript>
-                            <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.0') }}">
-                            <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.1') }}">
-                            <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.2') }}">
-                            <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.3') }}">
-                            <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.4') }}">
-                        </noscript>
-                        <channel-search></channel-search>
-                        <channel-search></channel-search>
-                        <channel-search></channel-search>
-                        <channel-search></channel-search>
-                        <channel-search></channel-search>
+                        <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.0') }}">
+                        <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.1') }}">
+                        <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.2') }}">
+                        <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.3') }}">
+                        <input name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="{{ old('channels.4') }}">
                     </div>
                     <input type="submit" value="Create Metachannel" class="btn btn-success btn-lg btn-block">
                     <input type="hidden" name="_token" value="{{ Session::token() }}">
