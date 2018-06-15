@@ -2,17 +2,6 @@
 
 @section('title', 'Channel: '.$result->items[0]->snippet->channelTitle.' - ')
 
-@section('navbar')
-    <li>
-        <form method="POST" class="form-inline" style="margin-top: 8px" action="{{url('search')}}">
-            <input name="query" class="form-control" type="text" placeholder="Search">
-            <input class="form-control btn btn-default" type="submit" value="Send">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        </form>
-    </li>
-    @parent
-@endsection
-
 @section('content')
     <div class="container">
         <!-- Header -->

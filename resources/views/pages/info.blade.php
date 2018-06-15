@@ -2,17 +2,6 @@
 
 @section('title', 'What is Metachannels - ')
 
-@section('navbar')
-    <li>
-        <form method="POST" class="form-inline" style="margin-top: 8px" action="{{url('search')}}">
-            <input type="text" name="query" class="form-control" placeholder="Search">
-            <input type="submit" class="form-control btn btn-default" value="Send">
-            <input name="_token" type="hidden" value="{{ csrf_token() }}">
-        </form>
-    </li>
-    @parent
-@endsection
-
 @section('content')
     <div class="container">
       <div class="row">
