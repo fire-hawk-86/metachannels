@@ -60,10 +60,10 @@
                 <nav aria-label="...">
                     <ul class="pager">
                         @isset($result->prevPageToken)
-                        <li class="previous"><a href="{{ url("channel/$id/$result->prevPageToken") }}"><span aria-hidden="true">&larr;</span> Newer</a></li>
+                            <li class="previous"><a href="{{ url("channel/$id/$result->prevPageToken") }}"><span aria-hidden="true">&larr;</span> Newer</a></li>
                         @endisset
                         @isset($result->nextPageToken)
-                        <li class="next"><a href="{{ url("channel/$id/$result->nextPageToken") }}">Older <span aria-hidden="true">&rarr;</span></a></li>
+                            <li class="next"><a href="{{ url("channel/$id/$result->nextPageToken") }}">Older <span aria-hidden="true">&rarr;</span></a></li>
                         @endisset
                     </ul>
                 </nav>

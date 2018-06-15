@@ -9,12 +9,14 @@ class Youtube extends Controller
 {
     public function video($id)
     {
-    	/*$related_videos = YoutubeApi::request('search', [
+    	/*
+        $related_videos = YoutubeApi::request('search', [
     		'part'              => 'snippet',
             'maxResults'        => 25,
             'relatedToVideoId'  => $id,
             'type'              => 'video',
-    	]);*/
+    	]);
+        */
 
         $vid = YoutubeApi::request('videos', [
             'id'    => $id,
