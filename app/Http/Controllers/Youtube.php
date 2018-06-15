@@ -35,27 +35,6 @@ class Youtube extends Controller
         ]);
     }
 
-    public function search_get()
-    {
-    	$query = Input::get('query');
-        return redirect("search/$query");
-    }
-
-    public function search($query)
-    {
-    	$obj = YoutubeApi::request('search', [
-            'part'              => 'snippet',
-            'maxResults'        => 16,
-            'q'                 => $query,
-            'type'              => 'video',
-        ]);
-
-        return view('youtube.search', [
-            'result' => $obj,
-            'query' => $query
-        ]);
-    }
-
     public function channel($id, $pageToken = null)
     {
         $parameters = [

@@ -19,8 +19,6 @@ Route::get('/', 'MetachannelController@index');
 Route::get('video/{id}',				'Youtube@video');
 Route::get('channel/{id}',				'Youtube@channel');
 Route::get('channel/{id}/{pageToken}',	'Youtube@channel');
-Route::get('search/{query}',			'Youtube@search');
-Route::post('search',					'Youtube@search_get');
 
 // Metachannel
 

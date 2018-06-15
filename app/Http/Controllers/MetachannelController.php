@@ -287,46 +287,44 @@ class MetachannelController extends Controller
     {
         $metachannel = Metachannel::find($id);
 
-        try
+        foreach ($metachannel->channels as $channel)
         {
-            foreach ($metachannel->channels as $channel)
+            $parameters = [
+                'id'   => $channel->ytid,
+                'part' => 'contentDetails',
+            ];
+            $ytchannel = YoutubeApi::request('channels', $parameters)->items[0];
+
+            $parameters = [
+                'playlistId' => $ytchannel->contentDetails->relatedPlaylists->uploads,
+                'maxResults' => 50,
+                'part'       => 'snippet',
+            ];
+            $videos = YoutubeApi::request('playlistItems', $parameters)->items;
+
+            /*
+            $obj = YoutubeApi::request('search', [
+                'channelId' => $channel->ytid,
+                'part'  => 'snippet,id',
+                'order' => 'date',
+                'maxResults' => 50,
+                'publishedAfter' => '2017-11-01T00:00:00Z',
+            ]);
+            */
+
+            foreach ($videos as $video)
             {
-                $obj = YoutubeApi::request('search', [
-                    'channelId' => $channel->ytid,
-                    'part'  => 'snippet,id',
-                    'order' => 'date',
-                    'maxResults' => 10,
-                    'publishedAfter' => '2017-11-01T00:00:00Z',
-                ]);
-
-                $videos = $obj->items;
-
-                foreach ($videos as $video)
+                if( count( DB::table('videos')->where('ytid', $video->snippet->resourceId->videoId)->get()->all() ) == 0)
                 {
-                    if($video->id->kind == 'youtube#video')
-                    {
-                        if( count( DB::table('videos')->where('ytid', $video->id->videoId)->get()->all() ) == 0)
-                        {
-                            DB::table('videos')->insert([
-                                'ytid'          => $video->id->videoId,
-                                'channel_id'    => $channel->id,
-                                'name'          => $video->snippet->title,
-                                'description'   => $video->snippet->description,
-                                'uploaded_at'   => date("Y-m-d G:i:s", strtotime($video->snippet->publishedAt))
-                            ]);
-
-                        }
-                    }
+                    DB::table('videos')->insert([
+                        'ytid'          => $video->snippet->resourceId->videoId,
+                        'channel_id'    => $channel->id,
+                        'name'          => $video->snippet->title,
+                        'description'   => $video->snippet->description,
+                        'uploaded_at'   => date("Y-m-d G:i:s", strtotime($video->snippet->publishedAt))
+                    ]);
                 }
             }
-        }
-        catch (\Exception $e)
-        {
-            if(env('APP_ENV') == 'local')
-                session()->flash('message', 'Error(MetachannelController@update_channels): '.$e->getMessage());
-            elseif (env('APP_ENV') == 'production')
-                session()->flash('message', 'Error');
-            return redirect('/meta/'.$id);
         }
 
         return redirect('/meta/'.$id);
@@ -391,7 +389,6 @@ class MetachannelController extends Controller
 
         return $response
             ->header('Content-Type', 'text/xml')
-            ->header('Content-Disposition', 'attachment; filename="metachannels.xml"')
-        ;
+            ->header('Content-Disposition', 'attachment; filename="metachannels.xml"');
     }
 }
