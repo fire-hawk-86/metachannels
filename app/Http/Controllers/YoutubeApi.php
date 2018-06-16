@@ -15,29 +15,22 @@ class YoutubeApi extends Controller
     	// add api key to parameters
     	$parameters['key'] = env('GOOGLE_API_KEY');
 
+        /*
     	// retrieve data as json
         $json = file_get_contents($url.'?'.http_build_query($parameters));
+        */
+
+        // retrieve data as json with curl
+        $ch = curl_init();
+        curl_setopt( $ch, CURLOPT_URL, $url.'?'.http_build_query($parameters) );
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+        $json = curl_exec( $ch );
+        
+        curl_close($ch);
 
         // convert json to object
         $obj = json_decode($json);
 
         return $obj;
-    }
-
-    static public function search_youtube_channel($query)
-    {
-        $obj = YoutubeApi::request('search', [
-            'part'       => 'snippet',
-            'maxResults' => 5,
-            'q'          => $query,
-            'type'       => 'channel',
-        ]);
-
-        return response()->json($obj);
-    }
-
-    static public function combineResponses($responses)
-    {
-
     }
 }
