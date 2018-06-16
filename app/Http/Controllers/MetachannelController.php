@@ -302,16 +302,6 @@ class MetachannelController extends Controller
             ];
             $videos = YoutubeApi::request('playlistItems', $parameters)->items;
 
-            /*
-            $obj = YoutubeApi::request('search', [
-                'channelId' => $channel->ytid,
-                'part'  => 'snippet,id',
-                'order' => 'date',
-                'maxResults' => 50,
-                'publishedAfter' => '2017-11-01T00:00:00Z',
-            ]);
-            */
-
             foreach ($videos as $video)
             {
                 if( count( DB::table('videos')->where('ytid', $video->snippet->resourceId->videoId)->get()->all() ) == 0)
@@ -358,37 +348,5 @@ class MetachannelController extends Controller
             'title' => $title,
             'metachannels' => $metachannels,
         ]);
-    }
-
-    /**
-     * Export all metachannels associated with the user to xml.
-     *
-     * @param  str  $user
-     * @return void
-     */
-    public function export_xml($user)
-    {
-        $user = User::where('name', $user)->first();
-        $metachannels = Metachannel::where('user_id', $user->id)->get();
-
-        $xml_metachannels = new SimpleXMLElement('<metachannels/>');
-
-        foreach ($metachannels as $metachannel) {
-            $xml_metachannel = $xml_metachannels->addChild('metachannel');
-            $xml_metachannel->addChild('name', $metachannel->name);
-            $xml_metachannel->addChild('description', $metachannel->description);
-            $xml_channels = $xml_metachannel->addChild('channels');
-            foreach ($metachannel->channels as $channel) {
-                $xml_channel = $xml_channels->addChild('channel');
-                $xml_channel->addChild('name', $channel->name);
-                $xml_channel->addChild('id', $channel->ytid);
-            }
-        }
-
-        $response = Response::make($xml_metachannels->asXML());
-
-        return $response
-            ->header('Content-Type', 'text/xml')
-            ->header('Content-Disposition', 'attachment; filename="metachannels.xml"');
     }
 }
