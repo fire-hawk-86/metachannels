@@ -16,9 +16,9 @@ class CreateMetachannelsTable extends Migration
         Schema::create('metachannels', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->nullable();
-            
+
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->dateTime('last_refresh');
         });

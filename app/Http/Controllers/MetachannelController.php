@@ -61,7 +61,6 @@ class MetachannelController extends Controller
     {
         $this->validate($request, [
             'name'          => 'required|unique:metachannels',
-            'description'   => 'required',
             'channels.*'    => 'nullable|url',
         ]);
 
@@ -158,7 +157,6 @@ class MetachannelController extends Controller
         {
             $this->validate($request, [
                 'name'          => 'required',
-                'description'   => 'required',
             ]);
 
             DB::table('metachannels')->where('id', $id)
