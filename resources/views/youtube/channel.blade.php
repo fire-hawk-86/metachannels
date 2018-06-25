@@ -7,7 +7,7 @@
         <!-- Header -->
         <div class="row">
             <div class="col-md-12">
-                <h1>Channel: {{ $result->items[0]->snippet->channelTitle }}</h1>
+                <h1>Channel: <a href="{{ url("https://www.youtube.com/channel/$channel->id") }}"><img src="{{ $channel->snippet->thumbnails->default->url }}" class="img-circle" style="width: 48px; height: 48px; vertical-align: -25%;"> {{ $result->items[0]->snippet->channelTitle }}</a></h1>
             </div>
         </div>
         <!-- Pagination -->
@@ -34,7 +34,7 @@
                             <img src="https://img.youtube.com/vi/{{ $video->snippet->resourceId->videoId }}/mqdefault.jpg" alt="">
                             <h4 class="header-margin-fix">{{ $video->snippet->title }}</h4>
                         </a>
-                        <p>{{ Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y') }} (<a href="{{ url('channel/'.$video->snippet->channelId) }}" target="_blank">{{ $video->snippet->channelTitle }}</a>)</p>
+                        <p>{{ Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y') }}</p>
                         <p style="font-size: 14px;">{{ $video->snippet->description }}</p>
                         <hr class="visible-xs-block">
                     </div>

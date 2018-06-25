@@ -39,7 +39,7 @@ class Youtube extends Controller
     {
         $parameters = [
             'id'   => $id,
-            'part' => 'contentDetails',
+            'part' => 'contentDetails,snippet',
         ];
         $channel = YoutubeApi::request('channels', $parameters)->items[0];
 
@@ -53,6 +53,7 @@ class Youtube extends Controller
 
     	return view('youtube.channel', [
             'id' => $id,
+            'channel' => $channel,
             'result' => $result,
         ]);
     }

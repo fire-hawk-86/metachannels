@@ -43,7 +43,7 @@
                     <img src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg" alt="">
                     <h3 class="header-margin-fix">{{ $video->name }}</h3>
                 </a>
-                <p>{{ $video->uploaded_at->format('d. F Y') }} (<a href="{{ url('channel/'.$video->channel->ytid) }}" target="_blank">{{ $video->channel->name }}</a>)</p>
+                <p>{{ $video->uploaded_at->format('d. F Y') }} (<a href="{{ url('channel/'.$video->channel->ytid) }}">{{ $video->channel->name }}</a>)</p>
                 <p>{{ $video->description }}</p>
                 <hr class="visible-xs-block">
             </div>
