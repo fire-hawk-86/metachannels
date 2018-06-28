@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('channels')->insert([
-          ['id' => 16, 'ytid' => 'UCDhu1klCDnf2glev0YbYkDA', 'name' => 'BeHaind', 'description' => 'Hallo sie! Ja, sie! Suchen sie Pranks, LetsPlays, 10 Arten von-Toplisten und viele weitere tolle Videos, die es schon überall sonst im Internet gibt? Ja? Dann viel Spaß beim Weitersuchen. Hier gibt es ausschließlich Kram, die dem Uhrheber (das bin ich) die Work-Life-Balance zergrätschen. \n\nImpressum:\n\nBeHaind\nc/o David Hain\nStrelitzer Straße 60\n10115 Berlin'],
+            ['id' => 16, 'ytid' => 'UCDhu1klCDnf2glev0YbYkDA', 'name' => 'BeHaind', 'description' => 'Hallo sie! Ja, sie! Suchen sie Pranks, LetsPlays, 10 Arten von-Toplisten und viele weitere tolle Videos, die es schon überall sonst im Internet gibt? Ja? Dann viel Spaß beim Weitersuchen. Hier gibt es ausschließlich Kram, die dem Uhrheber (das bin ich) die Work-Life-Balance zergrätschen. \n\nImpressum:\n\nBeHaind\nc/o David Hain\nStrelitzer Straße 60\n10115 Berlin'],
         	['id' => 17, 'ytid' => 'UCHyt6whzbCcG18q3m4ws6jw', 'name' => 'Nerdkultur', 'description' => 'Auf "Nerdkultur" gibt es die neuesten Previews, Reviews und vor allem Specials rund um all das, was man gerne augenzwinkernd als "nerdig" bezeichnet, aber verdient hat, ernst genommen zu werden - von und mit Marco Risch.\n\nPostanschrift: Webedia Gaming GmbH │ Marco Risch │ Ridlerstraße 55 │ 80339 München\n\nImpressum: Webedia Gaming GmbH · Ridlerstraße 55 · 80339 München\ngamestar.de gamepro.de onlinewelten.com areagames.de makinggames.biz jointheallyance.com de.ign.com \n​Sitz der Gesellschaft: München, Deutschland | Geschäftsadresse: Ridlerstraße 55 · 80339 München\nAmtsgericht München | HRB 218859 | Geschäftsführer: Nicolas John'],
         	['id' => 18, 'ytid' => 'UCQvTDmHza8erxZqDkjQ4bQQ', 'name' => 'Rocket Beans TV', 'description' => 'Rocket Beans TV steht für 24/7-Entertainment-Power rund um Gaming und Popkultur! Seit seinem Start am 15.01.2015 hat sich Deutschlands einziger unabhängiger Online-TV-Sender zum europaweit erfolgreichsten Kanal auf der Streaming-Plattform Twitch entwickelt. \nSeit dem 01.09.2016 sendet Rocket Beans TV 24 Stunden pro Tag auf YouTube. Mit seinem interaktiven, ungewöhnlichen Programmangebot und Auftritten prominenter Gäste (z.B. Moritz Bleibtreu, André Schürrle, Smudo uvm.), begeistern die Rocket Beans bis zu 120.000 Zuschauer täglich. Ausgezeichnet mit dem Deutschen Webvideopreis 2014 und 2015 sowie dem 1. Deutschen Content Marketing Preis desselben Jahres gestaltet Rocket Beans TV die Fernsehunterhaltung der Zukunft.\n\nDie Rocket Beans Entertainment GmbH ist Mitglied der USK.\n\nJugendschutzbeauftragter:\nUSK Unterhaltungssoftware Selbstkontrolle\nTorstr. 6, 10119 Berlin\njugendschutzbeauftragter@usk.de'],
         	['id' => 19, 'ytid' => 'UCtSP1OA6jO4quIGLae7Fb4g', 'name' => 'Rocket Beans TV Gaming', 'description' => 'Rocket Beans TV steht für 24/7-Entertainment-Power rund um Gaming und Popkultur!\nSeit seinem Start am 15.01.2015 hat sich Deutschlands einziger unabhängiger Online-TV-Sender zum europaweit erfolgreichsten Kanal auf der Streaming-Plattform Twitch entwickelt. Mit seinem interaktiven, ungewöhnlichen Programmangebot und Auftritten prominenter Gäste (z.B. Moritz Bleibtreu, André Schürrle, Smudo uvm.), begeistern die Rocket Beans bis zu 120.000 Zuschauer täglich. Ausgezeichnet mit dem Deutschen Webvideopreis 2014 und 2015 sowie dem 1. Deutschen Content Marketing Preis desselben Jahres gestaltet Rocket Beans TV die Fernsehunterhaltung der Zukunft.'],
@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('metachannels')->insert([
-          ['id' => 20, 'user_id' => 1, 'name' => 'Deutsche Channel', 'description' => '...die ok sind.', 'created_at' => '2017-12-20 12:41:27', 'updated_at' => '2018-06-13 10:16:38', 'last_refresh' => '2018-06-13 10:16:38'],
+            ['id' => 20, 'user_id' => 1, 'name' => 'Deutsche Channel', 'description' => '...die ok sind.', 'created_at' => '2017-12-20 12:41:27', 'updated_at' => '2018-06-13 10:16:38', 'last_refresh' => '2018-06-13 10:16:38'],
         	['id' => 21, 'user_id' => 1, 'name' => 'Philosophy', 'description' => '101', 'created_at' => '2017-12-20 12:42:14', 'updated_at' => '2018-06-06 21:09:05', 'last_refresh' => '2018-06-06 21:09:05'],
         	['id' => 22, 'user_id' => 1, 'name' => 'Movies', 'description' => 'Movie Reviews', 'created_at' => '2017-12-20 12:43:01', 'updated_at' => '2018-06-12 13:39:35', 'last_refresh' => '2018-06-12 13:39:35'],
         	['id' => 23, 'user_id' => 1, 'name' => 'Channel Awesome and Friends', 'description' => 'good old fun', 'created_at' => '2017-12-20 12:45:02', 'updated_at' => '2018-06-06 21:17:19', 'last_refresh' => '2018-06-06 21:17:19'],
@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('channel_metachannel')->insert([
-          ['channel_id' => 22, 'metachannel_id' => 22],
+            ['channel_id' => 22, 'metachannel_id' => 22],
         	['channel_id' => 23, 'metachannel_id' => 22],
         	['channel_id' => 24, 'metachannel_id' => 23],
         	['channel_id' => 25, 'metachannel_id' => 23],
