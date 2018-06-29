@@ -44,7 +44,7 @@
                     <h3 class="header-margin-fix">{{ $video->name }}</h3>
                 </a>
                 <p>{{ $video->uploaded_at->format('d. F Y') }} (<a href="{{ url('channel/'.$video->channel->ytid) }}">{{ $video->channel->name }}</a>)</p>
-                <p>{{ $video->description }}</p>
+                <p style="overflow-x: hidden;">{{ $video->description }}</p>
                 <hr class="visible-xs-block">
             </div>
             @endforeach

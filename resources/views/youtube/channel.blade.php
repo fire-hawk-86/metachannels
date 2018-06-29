@@ -35,7 +35,7 @@
                             <h4 class="header-margin-fix">{{ $video->snippet->title }}</h4>
                         </a>
                         <p>{{ Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y') }}</p>
-                        <p style="font-size: 14px;">{{ $video->snippet->description }}</p>
+                        <p style="font-size: 14px; overflow-x: hidden;">{{ $video->snippet->description }}</p>
                         <hr class="visible-xs-block">
                     </div>
                 @endforeach
