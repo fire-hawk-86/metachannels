@@ -17,7 +17,7 @@
         <!-- Content -->
         <div class="row">
             @foreach($metachannels as $metachannel)
-            <div class="fixed-height2 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="fixed-height2 col-sm-6 col-md-4 col-lg-3 col-xl-2" style="overflow-x: hidden;">
                 <a href="{{ url("meta/$metachannel->id") }}">
                     @if($metachannel->videos()->isNotEmpty())
                     <img src="https://img.youtube.com/vi/{{ $metachannel->videos()->first()->ytid }}/mqdefault.jpg" alt="">

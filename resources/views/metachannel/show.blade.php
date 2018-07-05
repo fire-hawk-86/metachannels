@@ -38,13 +38,13 @@
         <!-- Content -->
         <div class="row">
             @foreach($metachannel->videos() as $video)
-            <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2" style="overflow-x: hidden;">
                 <a href="{{ url("video/$video->ytid") }}">
                     <img src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg" alt="">
                     <h3 class="header-margin-fix">{{ $video->name }}</h3>
                 </a>
                 <p>{{ $video->uploaded_at->format('d. F Y') }} (<a href="{{ url('channel/'.$video->channel->ytid) }}">{{ $video->channel->name }}</a>)</p>
-                <p style="overflow-x: hidden;">{{ $video->description }}</p>
+                <p>{{ $video->description }}</p>
                 <hr class="visible-xs-block">
             </div>
             @endforeach

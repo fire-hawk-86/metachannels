@@ -29,13 +29,13 @@
         <div class="row">
             @if(count($result->items) > 0)
                 @foreach($result->items as $video)
-                    <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2" style="overflow-x: hidden;">
                         <a href="{{ url('video/'.$video->snippet->resourceId->videoId) }}">
                             <img src="https://img.youtube.com/vi/{{ $video->snippet->resourceId->videoId }}/mqdefault.jpg" alt="">
                             <h4 class="header-margin-fix">{{ $video->snippet->title }}</h4>
                         </a>
                         <p>{{ Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y') }}</p>
-                        <p style="font-size: 14px; overflow-x: hidden;">{{ $video->snippet->description }}</p>
+                        <p style="font-size: 14px;">{{ $video->snippet->description }}</p>
                         <hr class="visible-xs-block">
                     </div>
                 @endforeach
