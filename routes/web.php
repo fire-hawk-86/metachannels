@@ -17,15 +17,14 @@ Route::get('/', 'MetachannelController@index');
 // Youtube
 
 Route::get('video/{id}',				'Youtube@video');
-Route::get('channel/{id}',				'Youtube@channel');
-Route::get('channel/{id}/{pageToken}',	'Youtube@channel');
+Route::get('channel/{id}/{pageToken?}',	'Youtube@channel');
 
 // Metachannel
 
 Route::resource('meta',			'MetachannelController');
 Route::get('user/{user}',		'MetachannelController@index_user');
-Route::get('addchannel/{test}', 'MetachannelController@add_channel');
 Route::get('meta/{id}/update',	'MetachannelController@update_channels');
+Route::get('addchannel/{test}', 'MetachannelController@add_channel');
 
 // User
 
