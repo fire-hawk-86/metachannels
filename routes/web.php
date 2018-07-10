@@ -28,26 +28,18 @@ Route::get('addchannel/{test}', 'MetachannelController@add_channel');
 
 // User
 
-Route::delete('user/{id}', 'RemoveUserController');
-
-// Redirects
-
-Route::get('meta', function() {	return redirect('/'); });
-
-// Auth
-
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-
-// search youtube channels
-
-Route::get('searchyoutubechannel/{query}', 'YoutubeApi@search_youtube_channel')->name('searchyoutubechannel');
+Route::delete('user/{id}', 'RemoveUserController');
 
 // Test
 
 Route::get('myip', function() {
 	return Request::ip();
 });
+
+// Redirects
+
+Route::get('meta', function() { return redirect('/'); });
 
 // Static Pages
 
