@@ -21,3 +21,6 @@ Vue.component('channel-search', require('./components/ChannelSearch.vue'));
 const app = new Vue({
 	el: '#app'
 });
+
+// Bootstrap Toggle
+require('bootstrap-toggle');

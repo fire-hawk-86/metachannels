@@ -24,7 +24,12 @@
                     @else
                     <img src="http://via.placeholder.com/320x180" alt="">
                     @endif
-                    <h3 class="header-margin-fix">{{ $metachannel->name }}</h3>
+                    <h3 class="header-margin-fix">
+                        {{ $metachannel->name }}
+                        @if ($metachannel->public == 0)
+                            <small><i class="glyphicon glyphicon-sunglasses"></i></small>
+                        @endif
+                    </h3>
                 </a>
                 @if($metachannel->user)
                 <p>Created by: <a href="{{ url('user/'.$metachannel->user->name) }}">{{ $metachannel->user->name }}</a></p>

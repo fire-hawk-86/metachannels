@@ -33,7 +33,7 @@ class MetachannelController extends Controller
      */
     public function index()
     {
-        $metachannels = Metachannel::all();
+        $metachannels = Metachannel::where('public', 1)->get();
 
         return view('metachannel.index', [
             'title' => 'All Metachannels',
@@ -70,6 +70,7 @@ class MetachannelController extends Controller
         $metachannel->name          = $request->name;
         $metachannel->description   = $request->description;
         $metachannel->last_refresh  = Carbon::now()->toDateTimeString();
+        $metachannel->public        = $request->public == 'on' ? true : false;
         $metachannel->save();
 
         try
@@ -107,27 +108,57 @@ class MetachannelController extends Controller
     {
         $metachannel = Metachannel::find($id);
 
-        // last time refreshed the videos of the list of channels
-        $last_refresh = Carbon::parse($metachannel->last_refresh);
-        $now = Carbon::now();
-        // have an amount of minutes past ?
-        $minutes = $last_refresh->diffInMinutes($now);
+        if ($metachannel->public == 1) {
+            // public
+            $show_this_resource = true;
+        }
+        else {
+            // private
+            if ( Auth::check() ) {
+                // logged in
+                if ( Auth::id() == $metachannel->user_id ) {
+                    // owner of the metachannel
+                    $show_this_resource = true;
 
-        if($minutes >= env('REFRESH_MINUTES', 60))
-        {
-            // update last_refresh column
-            $metachannel->last_refresh = Carbon::now()->toDateTimeString();
-            $metachannel->save();
+                }
+                else {
+                    // not the owner of the metachannel
+                    $show_this_resource = false;
+                }
+            }
+            else {
+                // not logged in
+                $show_this_resource = false;
+            }
 
-            // then update the channels
-            $this->update_channels($id);
-            $last_refresh = $now;
         }
 
-        return view('metachannel.show', [
-            'metachannel' => $metachannel,
-            'minutes' => $last_refresh->diffForHumans($now),
-        ]);
+        if ($show_this_resource) {
+            // last time refreshed the videos of the list of channels
+            $last_refresh = Carbon::parse($metachannel->last_refresh);
+            $now = Carbon::now();
+            // have an amount of minutes past ?
+            $minutes = $last_refresh->diffInMinutes($now);
+
+            if($minutes >= env('REFRESH_MINUTES', 60))
+            {
+                // update last_refresh column
+                $metachannel->last_refresh = Carbon::now()->toDateTimeString();
+                $metachannel->save();
+
+                // then update the channels
+                $this->update_channels($id);
+                $last_refresh = $now;
+            }
+
+            return view('metachannel.show', [
+                'metachannel' => $metachannel,
+                'minutes' => $last_refresh->diffForHumans($now),
+            ]);
+        }
+        else {
+            return "This is a private Metachannel, how did you even get here?";
+        }
     }
 
     /**
@@ -163,6 +194,7 @@ class MetachannelController extends Controller
                 ->update([
                     'name'          => $request->name,
                     'description'   => $request->description,
+                    'public'        => $request->public == 'on' ? 1 : 0,
                 ]);
 
             $this->remove_all_channels($id);
@@ -327,19 +359,26 @@ class MetachannelController extends Controller
     public function index_user($user)
     {
         $user = User::where('name', $user)->firstOrFail();
-        $metachannels = Metachannel::where('user_id', $user->id)->get();
 
         // if someone is logged in
-        if(Auth::check())
+        if( Auth::check() )
         {
             // if you are the user of this metachannel list
             if (Auth::user()->name == $user->name) {
                 $title = "My Metachannels";
+                $metachannels = Metachannel::where('user_id', $user->id)->get();
+            }
+            else {
+                // wrong user
+                $title = "Metachannels of $user->name";
+                $metachannels = Metachannel::where(['user_id' => $user->id, 'public' => 1])->get();
             }
         }
         else
         {
+            // not logged in
             $title = "Metachannels of $user->name";
+            $metachannels = Metachannel::where(['user_id' => $user->id, 'public' => 1])->get();
         }
 
         return view('metachannel.index', [

@@ -21,6 +21,9 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2>{{ $metachannel->name }}
+                    @if ($metachannel->public == 0)
+                        <small><i class="glyphicon glyphicon-sunglasses"></i></small>
+                    @endif
                     <small>(
                         @foreach($metachannel->channels as $channel)
                         <a href="{{ url('channel/'.$channel->ytid) }}">{{ $channel->name }}</a>{{ $loop->remaining ? ', ' : '' }}

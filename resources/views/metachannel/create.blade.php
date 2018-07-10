@@ -17,9 +17,12 @@
         <!-- Content -->
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h1>Create New Metachannel</h1>
-                <hr>
                 <form method="POST" action="{{ url('meta') }}">
+                    <div class="pull-right">
+                        <input name="public" type="checkbox" checked data-toggle="toggle" data-on="Public" data-off="Private">
+                    </div>
+                    <h1>Create New Metachannel</h1>
+                    <hr>
                     <div class="form-group">
                         <label name="name" for="name">Name:</label>
                         <input id="name" name="name" class="form-control" value="{{ old('name') }}">
