@@ -35,6 +35,11 @@ class MetachannelController extends Controller
     {
         $metachannels = Metachannel::where('public', 1)->get();
 
+        if ( Auth::check() ) {
+            $private_metachannels = Metachannel::where( ['user_id' => Auth::id(), 'public' => 0] )->get();
+            $metachannels = $metachannels->merge($private_metachannels);
+        }
+
         return view('metachannel.index', [
             'title' => 'All Metachannels',
             'metachannels' => $metachannels,

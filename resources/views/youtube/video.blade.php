@@ -18,17 +18,8 @@
             </div>
             <!-- Sidebar -->
             <div class="col-md-4">
-                <h3 class="first-item" title="youtube.com doesn't give you this option anymore">Related Videos<br><small>(instead of recomended)</small></h3>
-                <!--
-                <div class="form-group">
-                    <select class="form-control">
-                        <option value="">All Channels</option>
-                        <option value="">This Channel</option>
-                        <option value="">Other Channels</option>
-                    </select>
-                </div>
-                -->
                 @isset($related_videos)
+                    <h3 class="first-item" title="youtube.com doesn't give you this option anymore">Related Videos<br><small>(instead of recomended)</small></h3>
                     @foreach ($related_videos->items as $video)
                         <div style="min-height: 78px; font-size: .8em; position: relative;">
                             <a href="{{ url('video/'.$video->id->videoId) }}">

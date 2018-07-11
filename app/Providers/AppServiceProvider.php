@@ -23,8 +23,6 @@ class AppServiceProvider extends ServiceProvider
         Route::resourceVerbs([
             'create' => 'new',
         ]);
-
-        Schema::defaultStringLength(191);
     }
 
     /**
