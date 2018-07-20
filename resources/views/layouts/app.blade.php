@@ -145,9 +145,16 @@
                 </span>
                 <!-- Right Footer -->
                 <span class="navbar-text pull-right">
-                    Created with Laravel 5
+                    Created with
+                    <a href="https://laravel.com/">Laravel 5</a>
                     <i>/</i>
-                    Bootstrap 3
+                    <a href="https://getbootstrap.com/docs/3.3/">Bootstrap 3</a>
+                    <i>|</i>
+                    hosted by
+                    <a href="https://all-inkl.com/PA3D7717E590DAD">
+                        All-Inkl.com
+                        <!--<img border="0" src="https://all-inkl.com/banner/all-inkl_banner_185x35_black.gif" alt="ALL-INKL.COM - Webhosting Server Hosting Domain Provider" />-->
+                    </a>
                 </span>
             </div>
         </footer>
