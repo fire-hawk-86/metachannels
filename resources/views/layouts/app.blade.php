@@ -155,6 +155,7 @@
                         All-Inkl.com
                         <!--<img border="0" src="https://all-inkl.com/banner/all-inkl_banner_185x35_black.gif" alt="ALL-INKL.COM - Webhosting Server Hosting Domain Provider" />-->
                     </a>
+                    Test
                 </span>
             </div>
         </footer>
