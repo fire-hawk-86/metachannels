@@ -30,7 +30,7 @@
             @if(count($result->items) > 0)
                 @foreach($result->items as $video)
                     <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2" style="overflow-x: hidden;">
-                        <a href="{{ url('video/'.$video->snippet->resourceId->videoId) }}">
+                        <a href="{{ url('video/'.$video->snippet->resourceId->videoId.'?channel='.$channel->id) }}">
                             <img src="https://img.youtube.com/vi/{{ $video->snippet->resourceId->videoId }}/mqdefault.jpg" alt="">
                             <h4 class="header-margin-fix">{{ $video->snippet->title }}</h4>
                         </a>

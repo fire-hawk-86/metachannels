@@ -43,7 +43,7 @@
         <div class="row">
             @foreach($metachannel->videos() as $video)
                 <div class="fixed-height col-sm-6 col-md-4 col-lg-3 col-xl-2" style="overflow-x: hidden;">
-                    <a href="{{ url("video/$video->ytid") }}">
+                    <a href="{{ url("video/$video->ytid?metachannel=$metachannel->id") }}">
                         <img src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg" alt="">
                         <h3 class="header-margin-fix">{{ $video->name }}</h3>
                     </a>
