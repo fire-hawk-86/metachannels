@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use App\Metachannel;
 
 class Youtube extends Controller
 {
-    public function video($id)
+    public function video(Request $request, $id)
     {
     	/*
         $related_videos = YoutubeApi::request('search', [
@@ -17,6 +18,35 @@ class Youtube extends Controller
             'type'              => 'video',
     	]);
         */
+
+
+        if ($channelId = $request->get('channel'))
+        {
+            $channel = YoutubeApi::request('channels', [
+        		'part'              => 'snippet, contentDetails',
+                'id'                => $channelId,
+        	])->items[0];
+
+            $playlistId = $channel->contentDetails->relatedPlaylists->uploads;
+
+            $playlistItems = YoutubeApi::request('playlistItems', [
+        		'part'       => 'snippet, contentDetails',
+                'maxResults' => '50',
+                'playlistId' => $playlistId,
+        	]);
+
+            $channel->playlistItems = $playlistItems;
+        }
+
+
+        if ($metachannelId = $request->get('metachannel'))
+        {
+            $metachannel = Metachannel::find($metachannelId);
+        }
+        else
+        {
+            $metachannel = null;
+        }
 
         $vid = YoutubeApi::request('videos', [
             'id'    => $id,
@@ -28,11 +58,19 @@ class Youtube extends Controller
         $description = preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $description);
         $vid->items[0]->snippet->description = $description;
 
-        return view('youtube.video', [
-            'id' => $id,
-            //'related_videos' => $related_videos,
-            'vid' => $vid->items[0]
-        ]);
+        $data = [];
+        $data['id'] = $id;
+        $data['vid'] = $vid->items[0];
+        if (isset($channel))
+        {
+            $data['channel'] = $channel;
+        }
+        if (isset($metachannel))
+        {
+            $data['metachannel'] = $metachannel;
+        }
+
+        return view('youtube.video', $data);
     }
 
     public function channel($id, $pageToken = null)

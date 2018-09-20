@@ -96,6 +96,10 @@ footer.navbar-static-bottom {
   }
 }
 
+a.active {
+    border: 1px solid #555;
+    background: #2F3338;
+}
 
 
 @media (min-width: $screen-sm) {  }

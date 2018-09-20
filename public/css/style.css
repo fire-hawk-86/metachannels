@@ -94,3 +94,8 @@ footer.navbar-static-bottom .pull-right {
   margin-right: 0;
 }
 
+a.active {
+  border: 1px solid #555;
+  background: #2F3338;
+}
+

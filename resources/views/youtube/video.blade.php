@@ -8,8 +8,13 @@
             <!-- Main -->
             <div class="col-md-8" id="main">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="853" height="480" src="https://www.youtube.com/embed/{{ $id }}?rel=0&autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                    <div id="ytplayer"></div>
                 </div>
+                <noscript>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe id="ytplayer" width="853" height="480" src="https://www.youtube.com/embed/{{ $id }}?rel=0&autoplay=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </noscript>
                 <a id="view-button" class="btn btn-default btn-sm pull-right" style="margin-top: 11px;" href="#">Change View</a>
                 <h3>{{$vid->snippet->title}}</h3>
                 <p style="float: left;">Channel: <a href="{{ url('channel/'.$vid->snippet->channelId) }}">{{ $vid->snippet->channelTitle }}</a></p>
@@ -17,7 +22,7 @@
                 <p style="clear:both; white-space: pre-line; font-size: 13px; margin-bottom: 20px;">{!! $vid->snippet->description !!}</p>
             </div>
             <!-- Sidebar -->
-            <div class="col-md-4">
+            <div class="col-md-4 sidebar">
                 @isset($related_videos)
                     <h3 class="first-item" title="youtube.com doesn't give you this option anymore">Related Videos<br><small>(instead of recomended)</small></h3>
                     @foreach ($related_videos->items as $video)
@@ -31,7 +36,55 @@
                         </div>
                     @endforeach
                 @endisset
+                @isset($channel)
+                    <h3>{{ $channel->snippet->title }}:</h3>
+                    @foreach ($channel->playlistItems->items as $video)
+                        <a class="{{ $id == $video->contentDetails->videoId ? 'active' : '' }}" style="display: flex; align-items: flex-start; padding: 5px;" data-video="{{ $video->contentDetails->videoId }}" href="{{ url('video/'.$video->contentDetails->videoId.'?channel='.$channel->id) }}">
+                            <img style="flex: 0 0 150px; height:auto; margin-right:10px;" src="https://img.youtube.com/vi/{{ $video->contentDetails->videoId }}/mqdefault.jpg">
+                            <p style="margin-bottom: 0;">{{ $video->snippet->title }}</p>
+                        </a>
+                    @endforeach
+                @endisset
+                @isset($metachannel)
+                    <h3>{{ $metachannel->name }}:</h3>
+                    @foreach ($metachannel->videos() as $video)
+                        <a class="{{ $id == $video->ytid ? 'active' : '' }}" style="display: flex; align-items: flex-start; padding: 5px;" data-video="{{ $video->ytid }}" href="{{ url("video/$video->ytid?metachannel=$metachannel->id") }}">
+                            <img style="flex: 0 0 150px; height:auto; margin-right:10px;" src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg">
+                            <p style="margin-bottom: 0;">{{ $video->name }}</p>
+                        </a>
+                    @endforeach
+                @endisset
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+          var player;
+
+          function onYouTubeIframeAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '300',
+              width: '400',
+              videoId: '{{ $id }}',
+              playerVars: { 'autoplay': 1, 'controls': 1,'autohide':1,'wmode':'opaque' },
+              events: {
+                'onStateChange': function(event) {
+                  if (event.data == YT.PlayerState.ENDED) {
+                      myFunction();
+                  }
+                }
+              }
+            });
+          }
+    </script>
+
+    <script>
+        function myFunction() {
+            var next_link = $('.sidebar .active').prev().attr('href');
+            window.open(next_link,"_self");
+        }
+    </script>
 @endsection
