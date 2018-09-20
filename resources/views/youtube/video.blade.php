@@ -69,7 +69,7 @@
               height: '300',
               width: '400',
               videoId: '{{ $id }}',
-              playerVars: { 'autoplay': 1, 'controls': 1,'autohide':1,'wmode':'opaque' },
+              playerVars: { 'autoplay': 1, 'controls': 1,'autohide':1,'wmode':'opaque', 'rel':0 },
               events: {
                 'onStateChange': function(event) {
                   if (event.data == YT.PlayerState.ENDED) {
