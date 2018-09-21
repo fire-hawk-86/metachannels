@@ -27,7 +27,10 @@
                         <h3 class="header-margin-fix">
                             {{ $metachannel->name }}
                             @if ($metachannel->public == 0)
-                                <small><i class="glyphicon glyphicon-sunglasses"></i></small>
+                                <small><i title="private" class="glyphicon glyphicon-sunglasses"></i></small>
+                            @endif
+                            @if ($metachannel->listed == 0)
+                                <small><i title="unlisted" class="glyphicon glyphicon-list"></i></small>
                             @endif
                         </h3>
                     </a>

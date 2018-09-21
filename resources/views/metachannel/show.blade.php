@@ -23,7 +23,10 @@
                 <h2>
                     {{ $metachannel->name }}
                     @if ($metachannel->public == 0)
-                        <small><i class="glyphicon glyphicon-sunglasses"></i></small>
+                        <small><i title="private" class="glyphicon glyphicon-sunglasses"></i></small>
+                    @endif
+                    @if ($metachannel->listed == 0)
+                        <small><i title="unlisted" class="glyphicon glyphicon-list"></i></small>
                     @endif
                     <small>(
                         @foreach($metachannel->channels as $channel)

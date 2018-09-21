@@ -24,7 +24,7 @@
                     <div class="pull-right">
                         <input style="margin-right: 1rem;" name="public" type="checkbox" data-toggle="toggle" data-on="Public" data-off="Private" {{ $metachannel->public == 1 ? "checked" : "" }}>
                         &nbsp;
-                        <input name="listed" type="checkbox" data-toggle="toggle" data-on="Listed" data-off="Unlisted">
+                        <input name="listed" type="checkbox" data-toggle="toggle" data-on="Listed" data-off="Unlisted" {{ $metachannel->listed == 1 ? "checked" : "" }}>
                     </div>
 
                     <h1>{{ 'Edit '.$metachannel->name }}</h1>

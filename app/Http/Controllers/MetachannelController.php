@@ -33,10 +33,16 @@ class MetachannelController extends Controller
      */
     public function index()
     {
-        $metachannels = Metachannel::where('public', 1)->get();
+        $metachannels = Metachannel::where(['public' => 1, 'listed' => 1])->get();
 
         if ( Auth::check() ) {
-            $private_metachannels = Metachannel::where( ['user_id' => Auth::id(), 'public' => 0] )->get();
+            $private_metachannels = Metachannel::where( 'user_id', Auth::id() )
+                                                ->where(function ($query) {
+                                                    $query->where('public', 0)
+                                                          ->orWhere('listed', 0);
+                                                })
+                                                ->get();
+
             $metachannels = $metachannels->merge($private_metachannels);
         }
 
@@ -200,6 +206,7 @@ class MetachannelController extends Controller
                     'name'          => $request->name,
                     'description'   => $request->description,
                     'public'        => $request->public == 'on' ? 1 : 0,
+                    'listed'        => $request->listed == 'on' ? 1 : 0,
                 ]);
 
             $this->remove_all_channels($id);
@@ -376,14 +383,14 @@ class MetachannelController extends Controller
             else {
                 // wrong user
                 $title = "Metachannels of $user->name";
-                $metachannels = Metachannel::where(['user_id' => $user->id, 'public' => 1])->get();
+                $metachannels = Metachannel::where(['user_id' => $user->id, 'public' => 1, 'listed' => 1])->get();
             }
         }
         else
         {
             // not logged in
             $title = "Metachannels of $user->name";
-            $metachannels = Metachannel::where(['user_id' => $user->id, 'public' => 1])->get();
+            $metachannels = Metachannel::where(['user_id' => $user->id, 'public' => 1, 'listed' => 1])->get();
         }
 
         return view('metachannel.index', [
