@@ -22,7 +22,9 @@
                     {{ csrf_field() }}
 
                     <div class="pull-right">
-                        <input name="public" type="checkbox" data-toggle="toggle" data-on="Public" data-off="Private" {{ $metachannel->public == 1 ? "checked" : "" }}>
+                        <input style="margin-right: 1rem;" name="public" type="checkbox" data-toggle="toggle" data-on="Public" data-off="Private" {{ $metachannel->public == 1 ? "checked" : "" }}>
+                        &nbsp;
+                        <input name="listed" type="checkbox" data-toggle="toggle" data-on="Listed" data-off="Unlisted">
                     </div>
 
                     <h1>{{ 'Edit '.$metachannel->name }}</h1>

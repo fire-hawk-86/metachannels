@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPrivateColumnToMetachannelsTable extends Migration
+class AddListedColumnToMetachannelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddPrivateColumnToMetachannelsTable extends Migration
     public function up()
     {
         Schema::table('metachannels', function (Blueprint $table) {
-            $table->boolean('public')->default(true);
+            $table->boolean('listed')->default(true);
         });
     }
 
@@ -26,7 +26,7 @@ class AddPrivateColumnToMetachannelsTable extends Migration
     public function down()
     {
         Schema::table('metachannels', function (Blueprint $table) {
-            $table->dropColumn('public');
+            $table->dropColumn('listed');
         });
     }
 }
