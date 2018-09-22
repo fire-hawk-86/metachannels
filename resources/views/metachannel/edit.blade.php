@@ -49,12 +49,12 @@
                     @endforeach
 
                     <div class="form-group">
-                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
-                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
-                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
-                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
-                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
-                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/user/example" value="">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/channel/example" value="">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/channel/example" value="">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/channel/example" value="">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/channel/example" value="">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/channel/example" value="">
+                        <input type="text" name="channels[]" class="form-control" placeholder="https://www.youtube.com/channel/example" value="">
                     </div>
 
                     <input type="submit" value="Update Metachannel" class="btn btn-success btn-lg btn-block">

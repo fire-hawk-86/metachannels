@@ -37,7 +37,7 @@
                     @endforeach
                 @endisset
                 @isset($channel)
-                    <h3>{{ $channel->snippet->title }}:</h3>
+                    <h3><a href="{{ url("channel/$channel->id") }}">{{ $channel->snippet->title }}:</a></h3>
                     @foreach ($channel->playlistItems->items as $video)
                         <a class="{{ $id == $video->contentDetails->videoId ? 'active' : '' }}" style="display: flex; align-items: flex-start; padding: 5px;" data-video="{{ $video->contentDetails->videoId }}" href="{{ url('video/'.$video->contentDetails->videoId.'?channel='.$channel->id) }}">
                             <img style="flex: 0 0 150px; height:auto; margin-right:10px;" src="https://img.youtube.com/vi/{{ $video->contentDetails->videoId }}/mqdefault.jpg">
@@ -46,7 +46,7 @@
                     @endforeach
                 @endisset
                 @isset($metachannel)
-                    <h3>{{ $metachannel->name }}:</h3>
+                    <h3><a href="{{ url("meta/$metachannel->id") }}">{{ $metachannel->name }}:</a></h3>
                     @foreach ($metachannel->videos() as $video)
                         <a class="{{ $id == $video->ytid ? 'active' : '' }}" style="display: flex; align-items: flex-start; padding: 5px;" data-video="{{ $video->ytid }}" href="{{ url("video/$video->ytid?metachannel=$metachannel->id") }}">
                             <img style="flex: 0 0 150px; height:auto; margin-right:10px;" src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg">
