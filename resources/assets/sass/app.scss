@@ -3,15 +3,15 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
-@import "./themes/slate/_variables.scss";
+@import "themes/slate/variables";
 $input-bg:          $gray;
 $input-color:       #eee;
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+// Bootstrap Toggle
+@import "node_modules/bootstrap-toggle/css/bootstrap-toggle";
+
 // Custom
 @import "custom";
-
-// Bootstrap Toggle
-@import "bootstrap-toggle";
