@@ -12,8 +12,6 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-toggle.css') }}">
 </head>
 <body>
     <div id="app">
