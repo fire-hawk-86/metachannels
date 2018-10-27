@@ -34,7 +34,7 @@
                             <img src="https://img.youtube.com/vi/{{ $video->snippet->resourceId->videoId }}/mqdefault.jpg" alt="">
                             <h4 class="header-margin-fix">{{ $video->snippet->title }}</h4>
                         </a>
-                        <p>{{ Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y') }}</p>
+                        <p><date data-date="{{ Carbon\Carbon::parse($video->snippet->publishedAt) }}">{{ Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y') }}</date></p>
                         <p style="font-size: 14px;">{{ $video->snippet->description }}</p>
                         <hr class="visible-xs-block">
                     </div>
