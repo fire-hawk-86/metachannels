@@ -196,6 +196,10 @@
                 .appendChild(e);
               }
             }
+
+            @if (config('disqus.loadwithclick') == false)
+                disqus();
+            @endif
         </script>
     @endif
     @yield('scripts')
