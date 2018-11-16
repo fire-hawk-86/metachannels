@@ -20,6 +20,11 @@
                 <p style="float: left;">Channel: <a href="{{ url('channel/'.$vid->snippet->channelId) }}">{{ $vid->snippet->channelTitle }}</a></p>
                 <p style="float: right;">{{ Carbon\Carbon::parse($vid->snippet->publishedAt)->format('d. F Y') }}</p>
                 <p style="clear:both; white-space: pre-line; font-size: 13px; margin-bottom: 20px;">{!! $vid->snippet->description !!}</p>
+                @if (config('disqus.enabled'))
+                    <div id="disqus_thread" class="text-center" style="margin-top: 22px;">
+                        <a class="btn btn-primary" style="display: inline-block; background: none; margin-top: 2.5rem;" href="#" onclick="disqus();return false;">Show Comments</a>
+                    </div>
+                @endif
             </div>
             <!-- Sidebar -->
             <div class="col-md-4 sidebar">

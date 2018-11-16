@@ -126,13 +126,6 @@
             </div>
 
             @yield('content')
-            @if (config('disqus.enabled'))
-                <div class="container">
-                    <div id="disqus_thread" class="text-center" style="margin-top: 22px;">
-                        <a class="btn btn-primary" style="display: inline-block; background: none;" href="#" onclick="disqus();return false;">Show Comments</a>
-                    </div>
-                </div>
-            @endif
         </div>
 
         <!-- Footer -->

@@ -42,6 +42,11 @@
             @else
                 <p>No videos found.</p>
             @endif
+            @if (config('disqus.enabled'))
+                <div id="disqus_thread" class="text-center" style="margin-top: 22px;">
+                    <a class="btn btn-primary" style="display: inline-block; background: none;" href="#" onclick="disqus();return false;">Show Comments</a>
+                </div>
+            @endif
         </div>
         <!-- Pagination -->
         <div class="row">
