@@ -10,16 +10,6 @@ class Youtube extends Controller
 {
     public function video(Request $request, $id)
     {
-    	/*
-        $related_videos = YoutubeApi::request('search', [
-    		'part'              => 'snippet',
-            'maxResults'        => 25,
-            'relatedToVideoId'  => $id,
-            'type'              => 'video',
-    	]);
-        */
-
-
         if ($channelId = $request->get('channel'))
         {
             $channel = YoutubeApi::request('channels', [
