@@ -44,5 +44,12 @@ Route::get('meta', function() { return redirect('/'); });
 // Static Pages
 
 Route::get('/{page_name}', function($page_name) {
-	return view("pages/$page_name");
+	if(View::exists("pages/$page_name"))
+    {
+        return view("pages/$page_name");
+    }
+    else
+    {
+        abort('404');
+    }
 });

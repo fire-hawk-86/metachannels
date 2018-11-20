@@ -117,7 +117,7 @@ class MetachannelController extends Controller
      */
     public function show($id)
     {
-        $metachannel = Metachannel::find($id);
+        $metachannel = Metachannel::findOrFail($id);
 
         if ($metachannel->public == 1) {
             // public
