@@ -21,6 +21,8 @@ class CreateMetachannelsTable extends Migration
             $table->text('description')->nullable();
             $table->timestamps();
             $table->dateTime('last_refresh');
+            $table->boolean('public')->default(true);
+            $table->boolean('listed')->default(true);
         });
     }
 
