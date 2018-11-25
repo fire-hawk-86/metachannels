@@ -15,8 +15,10 @@ class CreateChannelsTable extends Migration
     {
         Schema::create('channels', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('provider');
+            $table->string('eid');
             $table->string('ytid')->unique();
-            
+
             $table->string('name');
             $table->text('description');
         });
