@@ -1,5 +1,5 @@
 (17.01.2019)
-Please don't visit _metachannels.ga_ anymore, it's not mine anymore. and i can't reregister it on freenom.
+Please don't visit _metachannels.ga_ anymore, it's not my domain anymore. and i can't reregister it on freenom.
 It, for some reason redirects to some shady website _iyfnzgb.com_, please also don't visit this one website, because it seems connected to some malware stuff
 
 # Metachannels
