@@ -1,6 +1,6 @@
 (17.01.2019)
 Please don't visit _metachannels.ga_ anymore, it's not mine anymore. and i can't reregister it on freenom.
-It, for some reason redirects to some shady website _http://iyfnzgb.com_, please also don't visit this one website, because it seems connected to some malware stuff
+It, for some reason redirects to some shady website _iyfnzgb.com_, please also don't visit this one website, because it seems connected to some malware stuff
 
 # Metachannels
 
@@ -12,7 +12,7 @@ It, for some reason redirects to some shady website _http://iyfnzgb.com_, please
 
 ## Website
 
-You can test "Metachannels" [here](http://metachannels.ga/)
+You can test "Metachannels" [here](http://metachannels./)
 You can create Metachannels as a Guest. But if you want to edit them later, you need an account.
 
 ## Screenshot
