@@ -14,6 +14,8 @@ class CreateChannelMetachannelTable extends Migration
     public function up()
     {
         Schema::create('channel_metachannel', function (Blueprint $table) {
+            $table->string('provider')->default('youtube');
+            $table->string('channel_eid')->nullable();
             $table->unsignedInteger('channel_id');
             $table->unsignedInteger('metachannel_id');
         });
