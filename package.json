@@ -19,5 +19,8 @@
     "laravel-mix": "^1.0",
     "lodash": "^4.17.14",
     "vue": "^2.6.10"
+  },
+  "resolutions": {
+    "lodash.template": "^4.5.0"
   }
 }
