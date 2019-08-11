@@ -126,6 +126,13 @@
             </div>
 
             @yield('content')
+            @if (config('disqus.enabled'))
+                <div class="container">
+                    <div id="disqus_thread" class="text-center" style="margin-top: 22px;">
+                        <a class="btn btn-primary" style="display: inline-block; background: none;" href="#" onclick="disqus();return false;">Show Comments</a>
+                    </div>
+                </div>
+            @endif
         </div>
 
         <!-- Footer -->
@@ -149,9 +156,8 @@
                     <a href="https://getbootstrap.com/docs/3.3/">Bootstrap 3</a>
                     <i>|</i>
                     hosted by
-                    <a href="https://all-inkl.com/PA3D7717E590DAD">
-                        All-Inkl.com
-                        <!--<img border="0" src="https://all-inkl.com/banner/all-inkl_banner_185x35_black.gif" alt="ALL-INKL.COM - Webhosting Server Hosting Domain Provider" />-->
+                    <a href="https://uberspace.de">
+                        Uberspace
                     </a>
                 </span>
             </div>
