@@ -15,7 +15,6 @@
                         <iframe id="ytplayer" width="853" height="480" src="https://www.youtube.com/embed/{{ $id }}?rel=0&autoplay=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
                     </div>
                 </noscript>
-                <a id="view-button" class="btn btn-default btn-sm pull-right" style="margin-top: 11px;" href="#">Change View</a>
                 <h3>{{$vid->snippet->title}}</h3>
                 <p style="float: left;">Channel: <a href="{{ url('channel/'.$vid->snippet->channelId) }}">{{ $vid->snippet->channelTitle }}</a></p>
                 <p style="float: right;">{{ Carbon\Carbon::parse($vid->snippet->publishedAt)->format('d. F Y') }}</p>
