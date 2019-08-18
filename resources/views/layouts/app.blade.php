@@ -33,6 +33,11 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    @if ( Auth::check() && !Request::is("user/".Auth::user()->name) )
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href="{{ url("user/".Auth::user()->name) }}">{{ Auth::user()->name }}</a></li>
+                        </ul>
+                    @endif
                     <ul class="nav navbar-nav navbar-right">
                         @section('navbar')
                             @if (Auth::guest())
