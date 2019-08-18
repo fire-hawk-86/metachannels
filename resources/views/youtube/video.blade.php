@@ -90,12 +90,12 @@
             if (document.fullscreenElement == null) {
 
                 // not in fullscreen
-                var next_link = $('.sidebar .active').prev().attr('href');
+                var next_link = $('.sidebar .active').prev().find("a").attr('href');
                 window.open(next_link,"_self");
             }
             else {
                 // in fullscreen
-                var next_link = $('.sidebar .active').prev().attr('href');
+                var next_link = $('.sidebar .active').prev().find("a").attr('href');
                 next_id = next_link.substring( 0, next_link.indexOf('?') ).split('/')[4];
 
                 $('.sidebar .active').removeClass('active').prev().addClass('active');
