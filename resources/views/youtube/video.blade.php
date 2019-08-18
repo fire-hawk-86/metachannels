@@ -53,7 +53,7 @@
                             </a>
                             <div style="margin-bottom: 0;">
                                 <p><a href="{{ url("video/$video->ytid?metachannel=$metachannel->id") }}" style="text-decoration: none;">{{ $video->name }}</a></p>
-                                <p><a href="#" style="color: inherit; text-decoration: none;">{{ $video->channel->name }}</a></p>
+                                <p><a href="{{ url("channel/".$video->channel->ytid) }}" style="color: inherit; text-decoration: none;">{{ $video->channel->name }}</a></p>
                             </div>
                         </div>
                     @endforeach
