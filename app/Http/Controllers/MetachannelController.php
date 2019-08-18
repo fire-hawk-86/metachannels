@@ -33,7 +33,7 @@ class MetachannelController extends Controller
      */
     public function index()
     {
-        $metachannels = Metachannel::where(['public' => 1, 'listed' => 1])->get();
+        $metachannels = Metachannel::where(['public' => 1, 'listed' => 1])->orderBy('name', 'asc')->get();
 
         if ( Auth::check() ) {
             $private_metachannels = Metachannel::where( 'user_id', Auth::id() )
@@ -71,7 +71,7 @@ class MetachannelController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'          => 'required|unique:metachannels',
+            'name'          => 'required',
             'channels.*'    => 'nullable|url',
         ]);
 
@@ -378,19 +378,19 @@ class MetachannelController extends Controller
             // if you are the user of this metachannel list
             if (Auth::user()->name == $user->name) {
                 $title = "My Metachannels";
-                $metachannels = Metachannel::where('user_id', $user->id)->get();
+                $metachannels = Metachannel::where('user_id', $user->id)->orderBy('name', 'asc')->get();
             }
             else {
                 // wrong user
                 $title = "Metachannels of $user->name";
-                $metachannels = Metachannel::where(['user_id' => $user->id, 'public' => 1, 'listed' => 1])->get();
+                $metachannels = Metachannel::where(['user_id' => $user->id, 'public' => 1, 'listed' => 1])->orderBy('name', 'asc')->get();
             }
         }
         else
         {
             // not logged in
             $title = "Metachannels of $user->name";
-            $metachannels = Metachannel::where(['user_id' => $user->id, 'public' => 1, 'listed' => 1])->get();
+            $metachannels = Metachannel::where(['user_id' => $user->id, 'public' => 1, 'listed' => 1])->orderBy('name', 'asc')->get();
         }
 
         return view('metachannel.index', [
