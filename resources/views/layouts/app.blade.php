@@ -28,7 +28,7 @@
                     </button>
                     <!-- Brand -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <span class="label label-danger lb-lg">Meta</span> Channels !
+                        <span class="label label-danger lb-lg">Meta</span> Channels
                     </a>
                 </div>
 
