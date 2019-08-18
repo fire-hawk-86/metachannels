@@ -25,28 +25,38 @@
                 @isset($related_videos)
                     <h3 class="first-item" title="youtube.com doesn't give you this option anymore">Related Videos<br><small>(instead of recomended)</small></h3>
                     @foreach ($related_videos->items as $video)
-                        <div style="min-height: 78px; font-size: .8em; position: relative;">
-                            <a href="{{ url('video/'.$video->id->videoId) }}">
-                                <img style="position: absolute; top: -11px; left: 0; clip: rect(11px,120px,79px,0px);" src="{{$video->snippet->thumbnails->default->url}}">
-                                <div style="margin-left: 130px; line-height: 1.6; max-height: 3.2em; overflow: hidden;" title="{{ $video->snippet->title }}">{{$video->snippet->title}}</div>
+
+                        <div class="{{ $id == $video->contentDetails->videoId ? 'active' : '' }}" style="display: flex; align-items: flex-start; padding: 5px;" data-video="{{ $video->contentDetails->videoId }}">
+                            <a href="{{ url('video/'.$video->contentDetails->videoId.'?channel='.$channel->id) }}">
+                                <img style="flex: 0 0 150px; width: 150px; height:auto; margin-right:10px;" src="https://img.youtube.com/vi/{{ $video->contentDetails->videoId }}/mqdefault.jpg">
                             </a>
-                            <div style="margin-left: 130px;">{{Carbon\Carbon::parse($video->snippet->publishedAt)->format('d. F Y')}}</div>
-                            <div style="margin-left: 130px; margin-bottom: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Channel: <a href="{{ url('channel/'.$video->snippet->channelId) }}">{{ $video->snippet->channelTitle }}</a></div>
+                            <div style="margin-bottom: 0;">
+                                <p><a href="{{ url('video/'.$video->contentDetails->videoId.'?channel='.$channel->id) }}" style="text-decoration: none;">{{ $video->snippet->title }}</a></p>
+                                <p><a href="{{ url("channel/".$video->snippet->channelId) }}" style="color: inherit; text-decoration: none;">{{ $video->snippet->channelTitle }}</a></p>
+                            </div>
                         </div>
+
                     @endforeach
                 @endisset
                 @isset($channel)
                     <h3><a href="{{ url("channel/$channel->id") }}">{{ $channel->snippet->title }}:</a></h3>
                     @foreach ($channel->playlistItems->items as $video)
-                        <a class="{{ $id == $video->contentDetails->videoId ? 'active' : '' }}" style="display: flex; align-items: flex-start; padding: 5px;" data-video="{{ $video->contentDetails->videoId }}" href="{{ url('video/'.$video->contentDetails->videoId.'?channel='.$channel->id) }}">
-                            <img style="flex: 0 0 150px; width: 150px; height:auto; margin-right:10px;" src="https://img.youtube.com/vi/{{ $video->contentDetails->videoId }}/mqdefault.jpg">
-                            <p style="margin-bottom: 0;">{{ $video->snippet->title }}</p>
-                        </a>
+
+                        <div class="{{ $id == $video->contentDetails->videoId ? 'active' : '' }}" style="display: flex; align-items: flex-start; padding: 5px;" data-video="{{ $video->contentDetails->videoId }}">
+                            <a href="{{ url('video/'.$video->contentDetails->videoId.'?channel='.$channel->id) }}">
+                                <img style="flex: 0 0 150px; width: 150px; height:auto; margin-right:10px;" src="https://img.youtube.com/vi/{{ $video->contentDetails->videoId }}/mqdefault.jpg">
+                            </a>
+                            <div style="margin-bottom: 0;">
+                                <p><a href="{{ url('video/'.$video->contentDetails->videoId.'?channel='.$channel->id) }}" style="text-decoration: none;">{{ $video->snippet->title }}</a></p>
+                            </div>
+                        </div>
+
                     @endforeach
                 @endisset
                 @isset($metachannel)
                     <h3><a href="{{ url("meta/$metachannel->id") }}">{{ $metachannel->name }}:</a></h3>
                     @foreach ($metachannel->videos() as $video)
+
                         <div class="{{ $id == $video->ytid ? 'active' : '' }}" style="display: flex; align-items: flex-start; padding: 5px;" data-video="{{ $video->ytid }}">
                             <a href="{{ url("video/$video->ytid?metachannel=$metachannel->id") }}">
                                 <img style="flex: 0 0 150px; width: 150px; height:auto; margin-right:10px;" src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg">
@@ -56,6 +66,7 @@
                                 <p><a href="{{ url("channel/".$video->channel->ytid) }}" style="color: inherit; text-decoration: none;">{{ $video->channel->name }}</a></p>
                             </div>
                         </div>
+                        
                     @endforeach
                 @endisset
             </div>
