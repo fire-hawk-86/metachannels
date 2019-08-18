@@ -8572,6 +8572,8 @@ footer.navbar-static-bottom .pull-right {
   margin-right: 0;
 }
 
-a.active {
-  background: #555;
+div.active {
+  /*border: 1px solid #555;*/
+  background: #888;
 }
+

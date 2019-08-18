@@ -47,10 +47,15 @@
                 @isset($metachannel)
                     <h3><a href="{{ url("meta/$metachannel->id") }}">{{ $metachannel->name }}:</a></h3>
                     @foreach ($metachannel->videos() as $video)
-                        <a class="{{ $id == $video->ytid ? 'active' : '' }}" style="display: flex; align-items: flex-start; padding: 5px;" data-video="{{ $video->ytid }}" href="{{ url("video/$video->ytid?metachannel=$metachannel->id") }}">
-                            <img style="flex: 0 0 150px; width: 150px; height:auto; margin-right:10px;" src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg">
-                            <p style="margin-bottom: 0;">{{ $video->name }}</p>
-                        </a>
+                        <div class="{{ $id == $video->ytid ? 'active' : '' }}" style="display: flex; align-items: flex-start; padding: 5px;" data-video="{{ $video->ytid }}">
+                            <a href="{{ url("video/$video->ytid?metachannel=$metachannel->id") }}">
+                                <img style="flex: 0 0 150px; width: 150px; height:auto; margin-right:10px;" src="https://img.youtube.com/vi/{{ $video->ytid }}/mqdefault.jpg">
+                            </a>
+                            <div style="margin-bottom: 0;">
+                                <p><a href="{{ url("video/$video->ytid?metachannel=$metachannel->id") }}" style="text-decoration: none;">{{ $video->name }}</a></p>
+                                <p><a href="#" style="color: inherit; text-decoration: none;">{{ $video->channel->name }}</a></p>
+                            </div>
+                        </div>
                     @endforeach
                 @endisset
             </div>
