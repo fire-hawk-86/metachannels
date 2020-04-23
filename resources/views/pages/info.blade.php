@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h1>Why Metachannels?</h1>
+                <h1>Why Metachannels??</h1>
                 <hr>
                 <p>
                     Because Youtube became more and more uncomfortable for me to use over the years.
